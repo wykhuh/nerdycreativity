@@ -2,42 +2,42 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
 	
 	<url>
-		<loc>https://nerdycreativity.net/eleventy-base-blog/blog/2024-06-06-community-science-issues/</loc>
+		<loc>https://nerdycreativity.net/blog/2024-06-06-community-science-issues/</loc>
 		<lastmod>2024-06-06</lastmod>
 	</url>
 	
 	<url>
-		<loc>https://nerdycreativity.net/eleventy-base-blog/blog/2024-06-24-summer-learning/</loc>
+		<loc>https://nerdycreativity.net/blog/2024-06-24-summer-learning/</loc>
 		<lastmod>2024-06-24</lastmod>
 	</url>
 	
 	<url>
-		<loc>https://nerdycreativity.net/eleventy-base-blog/about/</loc>
+		<loc>https://nerdycreativity.net/about/</loc>
 		<lastmod>2024-06-25</lastmod>
 	</url>
 	
 	<url>
-		<loc>https://nerdycreativity.net/eleventy-base-blog/blog/</loc>
+		<loc>https://nerdycreativity.net/blog/</loc>
 		<lastmod>2024-06-25</lastmod>
 	</url>
 	
 	<url>
-		<loc>https://nerdycreativity.net/eleventy-base-blog/</loc>
+		<loc>https://nerdycreativity.net/</loc>
 		<lastmod>2024-06-25</lastmod>
 	</url>
 	
 	<url>
-		<loc>https://nerdycreativity.net/eleventy-base-blog/tags/</loc>
+		<loc>https://nerdycreativity.net/tags/</loc>
 		<lastmod>2024-06-25</lastmod>
 	</url>
 	
 	<url>
-		<loc>https://nerdycreativity.net/eleventy-base-blog/tags/community-science/</loc>
+		<loc>https://nerdycreativity.net/tags/community-science/</loc>
 		<lastmod>2024-06-25</lastmod>
 	</url>
 	
 	<url>
-		<loc>https://nerdycreativity.net/eleventy-base-blog/tags/life-long-learning/</loc>
+		<loc>https://nerdycreativity.net/tags/life-long-learning/</loc>
 		<lastmod>2024-06-25</lastmod>
 	</url>
 </urlset>
