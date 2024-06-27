@@ -45,4 +45,5 @@ in progress
 
 Introduction to rasters with terra, [link](https://jflowernet.github.io/intro-terra-ecodatascience/)<br>
 start: June 24<br>
-in progress
+done: June 25
+
