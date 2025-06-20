@@ -1,6 +1,8 @@
 ---
 title: Paper or pixels, making is making
 date: 2015-05-11
+tags:
+  - life-long learning
 ---
 
 When I tell people that I switched from being a packaging designer to a software engineer, a common response I get is, "Wow, that's a complete career change!" But for me, I see the commonality between paper engineering and software engineering, instead of the differences.

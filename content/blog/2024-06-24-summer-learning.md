@@ -47,3 +47,30 @@ Introduction to rasters with terra, [link](https://jflowernet.github.io/intro-te
 start: June 24<br>
 done: June 25
 
+Build Go Apps That Scale on AWS, [link](https://frontendmasters.com/courses/go-aws/)<br>
+start: July 13<br>
+in progress
+
+Full Stack for Front-End Engineers, v3, [link](https://frontendmasters.com/courses/fullstack-v3/)<br>
+start: July 14<br>
+done: Aug 4
+
+Networking Fundamentals, [link](https://www.youtube.com/playlist?list=PLIFyRwBY_4bRLmKfP1KnZA6rZbRHtxmXi)<br>
+start: July 15<br>
+done: July 15
+
+Complete Intro to Containers, v2, [link](https://frontendmasters.com/workshops/complete-intro-containers-v2/)<br>
+start: July 20<br>
+in progress
+
+Learning Docker, [link](https://www.linkedin.com/learning/learning-docker-17236240/)<br>
+start: July 19<br>
+done: July 20
+
+Complete Intro to Linux and the Command-Line, [link](https://frontendmasters.com/courses/linux-command-line/)<br>
+start: July 20<br>
+done: Aug 4
+
+Small Language Models, [link](https://github.com/jdportercode/TAP24/)<br>
+start: Aug 13<br>
+done: Aug 14
