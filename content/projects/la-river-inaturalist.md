@@ -21,11 +21,9 @@ As part of Pasadena City College's Geographic Information Systems and Technology
 
 I created three maps that looked at biodiversity along the LA River. First maps looks at the number of iNaturalist observation withing two miles of the LA River. Second map compares iNaturalist observations with the location of parks and soft-bottom areas of the river. Third map compares the number of iNaturalist observations with median household income. The maps were created using ArcGIS Pro.
 
-
 ## Project 2
 
 I revised the appearance of the LA River iNaturalist maps based on feedback from Professor Agredano.
-
 
 ## Project 3
 
@@ -38,5 +36,3 @@ Data sources: The dashboard uses data from iNaturlist from GBIF, Los Angeles Riv
 Note: The taxa search is awkward to use due to the limitations of the built-in Dashboard search. The built-in search does not allow users to create custom search for hierarchical data.
 
 Note: I got the data from CWH, but didn't have time to verify my data processing steps. Therefore my computed average scores do not match the scores listed in their reports.
-
-

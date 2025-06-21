@@ -11,9 +11,7 @@ teckStack:
   - Vue
   - Leaflet
   - D3
-siteUrl: [
-  {url: https://data.ucedna.com, text: CALeDNA data portal}
-]
+siteUrl: [{ url: https://data.ucedna.com, text: CALeDNA data portal }]
 
 repoUrl:
 projectType: coding

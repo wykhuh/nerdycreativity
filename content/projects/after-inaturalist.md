@@ -14,9 +14,13 @@ teckStack:
   - R Studio
   - Github Classroom
   - Github Codespaces
-siteUrl: [
-  {url: https://wykhuh.github.io/after-inaturalist-r, text: 'After iNaturalist'}
-]
+siteUrl:
+  [
+    {
+      url: https://wykhuh.github.io/after-inaturalist-r,
+      text: "After iNaturalist",
+    },
+  ]
 repoUrl:
 projectType: coding
 ---
@@ -28,7 +32,6 @@ One of my frustrations with many community science projects is that community sc
 ## Project Details
 
 I parterned up with the Community Science team at the Natural History Museum of Los Angeles County to develop a workshop to teach community scientists and community organizers how to analyze iNaturalist City Nature Challenge data using R. Our goal was to teach community scientists some basic skills so that they could look for answers to their own questions. We believe it is important to teach community scientists that their voice and questions matter. During the first class, we covered how to download iNaturalist CSV data, create maps, and create charts using R. During the second class, each attendee presented their analysis.
-
 
 ## Lessons Learned
 
