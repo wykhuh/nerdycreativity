@@ -1,10 +1,14 @@
 ---
 layout: layouts/base.njk
 ---
-{# Only include the syntax highlighter CSS on blog posts #}
-{%- css %}{% include "node_modules/prismjs/themes/prism-okaidia.css" %}{% endcss %}
-{%- css %}{% include "public/css/prism-diff.css" %}{%- endcss %}
-<h1 class="post-title">{{ title }}</h1>
+{# Only include the syntax highlighter CSS on blog posts, included with the CSS per-page bundle #}
+<style>
+  {% include "node_modules/prismjs/themes/prism-okaidia.css" %}
+</style>
+<style>
+  {% include "css/prism-diff.css" %}
+</style>
+<h1>{{ title }}</h1>
 
 <ul class="post-metadata">
   <li>
@@ -27,11 +31,13 @@ layout: layouts/base.njk
   {%- if nextPost or previousPost %}
     <ul class="links-nextprev">
       {%- if previousPost %}
-        <li>Previous: <a href="{{ previousPost.url }}">{{ previousPost.data.title }}</a>
+        <li class="links-nextprev-prev">← Previous<br>
+          <a href="{{ previousPost.url }}">{{ previousPost.data.title }}</a>
         </li>
       {% endif %}
       {%- if nextPost %}
-        <li>Next: <a href="{{ nextPost.url }}">{{ nextPost.data.title }}</a>
+        <li class="links-nextprev-next">Next →<br>
+          <a href="{{ nextPost.url }}">{{ nextPost.data.title }}</a>
         </li>
       {% endif %}
     </ul>

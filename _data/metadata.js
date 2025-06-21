@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   title: "Nerdy Creativity",
   url: "https://nerdycreativity.net/",
   language: "en",
