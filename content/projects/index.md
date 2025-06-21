@@ -31,18 +31,6 @@ Projects I worked for fun or side projects.
   {% endfor %}
 </div>
 
-## Coding - Whirl-i-Gig
-
-Projects I worked on as a software engineer at Whirl-i-Gig.
-
-<div class="project-list">
-  {% for project in collections.projects %}
-    {% if project.data.projectType == 'coding-wig' %}
-      {% include "layouts/project-card.njk" %}
-    {% endif %}
-  {% endfor %}
-</div>
-
 ## Paper Engineering - Structural Graphics
 
 Projects I worked on as a paper engineer at Structural Graphics.

@@ -27,7 +27,7 @@ siteUrl:
     },
   ]
 repoUrl: https://github.com/collectiveaccess/Wikidata-Integration-UI/tree/main
-projectType: coding-wig
+projectType: coding
 ---
 
 ## Project Details
