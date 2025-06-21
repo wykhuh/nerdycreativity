@@ -5,8 +5,6 @@ eleventyNavigation:
   order: 4
 ---
 
-
-
 # Projects
 
 I'm a nerd who like to make stuff. Here's some of the stuff that I've made.
@@ -23,6 +21,8 @@ I'm a nerd who like to make stuff. Here's some of the stuff that I've made.
 
 ## Coding
 
+Projects I worked for fun or side projects.
+
 <div class="project-list">
   {% for project in collections.projects %}
     {% if project.data.projectType == 'coding' %}
@@ -31,22 +31,25 @@ I'm a nerd who like to make stuff. Here's some of the stuff that I've made.
   {% endfor %}
 </div>
 
-## Coding - Work
+## Coding - Whirl-i-Gig
+
+Projects I worked on as a software engineer at Whirl-i-Gig.
 
 <div class="project-list">
   {% for project in collections.projects %}
-    {% if project.data.projectType == 'coding-work' %}
+    {% if project.data.projectType == 'coding-wig' %}
       {% include "layouts/project-card.njk" %}
     {% endif %}
   {% endfor %}
 </div>
 
+## Paper Engineering - Structural Graphics
 
-## Paper Engineering
+Projects I worked on as a paper engineer at Structural Graphics.
 
 <div class="project-list">
   {% for project in collections.projects %}
-    {% if project.data.projectType == 'paper' %}
+    {% if project.data.projectType == 'paper-sg' %}
       {% include "layouts/project-card.njk" %}
     {% endif %}
   {% endfor %}
