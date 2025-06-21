@@ -16,12 +16,15 @@
   --background-color: #fff;
 
   --text-color: var(--color-gray-90);
-  --text-color-link: #082840;
-  --text-color-link-active: #5f2b48;
-  --text-color-link-visited: #17050f;
+  --text-color-link: #dda15e;
+  --text-color-link-active: #bc6c25;
+  --text-color-link-visited: #758543;
 
   --syntax-tab-size: 2;
 }
+
+/* https://coolors.co/palette/606c38-283618-fefae0-dda15e-bc6c25
+["#606c38","#283618","#fefae0","#dda15e","#bc6c25"] */
 
 @media (prefers-color-scheme: dark) {
   :root {
@@ -53,9 +56,6 @@ body {
 }
 html {
   overflow-y: scroll;
-}
-body {
-  max-width: 60em;
 }
 
 /* https://www.a11yproject.com/posts/how-to-hide-content/ */
@@ -98,15 +98,6 @@ main :first-child {
   margin-top: 0;
 }
 
-header {
-  border-bottom: 1px dashed var(--color-gray-20);
-}
-header:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
 .links-nextprev {
   list-style: none;
   border-top: 1px dashed var(--color-gray-20);
@@ -145,8 +136,28 @@ code {
 }
 
 /* ===============================
+layout
+=============================== */
+
+main,
+header {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+/* ===============================
 header
 =============================== */
+
+header {
+  box-shadow: 0px 1px 5px var(--color-gray-50);
+}
+
+header:after {
+  content: "";
+  display: table;
+  clear: both;
+}
 
 header {
   display: flex;
@@ -210,6 +221,10 @@ nav
 }
 .nav a[href][aria-current="page"] {
   text-decoration: underline;
+}
+
+.nav-item a[href] {
+  color: var(--text-color-link-visited);
 }
 
 /* ===============================
@@ -296,8 +311,18 @@ nav
   );
 }
 
-.post-title a {
+h1.post-title a {
   text-decoration: none;
+  color: var(--text-color);
+}
+
+h1.post-title a:visited {
+  color: var(--text-color);
+}
+
+h1.post-title a:active,
+h1.post-title a:hover {
+  text-decoration: underline;
 }
 
 .post-metadata {
