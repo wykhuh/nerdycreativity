@@ -1,0 +1,41 @@
+---
+layout: "layouts/base.njk"
+---
+
+<div class="project">
+  <h1>{{ title }}</h1>
+  <div class="image-wrapper">
+      <img src="{{ image }}" alt="{{ imageAlt }}">
+  </div>
+
+  <div class="content prose">
+    {{ content | safe }}
+  </div>
+
+  {% if siteUrl or repoUrl%}
+    <h2>Links</h2>
+    <ul class="links-list">
+      {% if siteUrl %}
+        {% for site in siteUrl %}
+          <li><a href="{{site.url}}">{{site.text}}</a></li>
+        {% endfor %}
+      {% endif %}
+
+      {% if repoUrl %}
+        <li><a href="{{repoUrl}}">Github repo</a></li>
+      {% endif %}
+    </ul>
+  {% endif %}
+
+
+  {% if teckStack %}
+    <h2>Tech Stack</h2>
+
+    <ul class="techstack-list">
+      {% for tag in teckStack %}
+        <li>{{ tag }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+
+</div>
