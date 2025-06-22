@@ -3,7 +3,7 @@ title: CALeDNA
 tags:
   - community science
 
-image: /images/caledna.png
+image: /images/coding/caledna.png
 imageAlt: CALeDNA logo
 teckStack:
   - Ruby on Rails

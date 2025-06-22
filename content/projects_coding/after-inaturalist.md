@@ -3,7 +3,7 @@ title: After iNaturalist
 tags:
   - community science
 
-image: /images/After_iNaturalist.jpg
+image: /images/coding/After_iNaturalist.jpg
 imageAlt: After iNaturalist graphic
 teckStack:
   - R

@@ -3,7 +3,7 @@ title: Data Explorers
 tags:
   - community science
 
-image: /images/data-explorers.png
+image: /images/coding/data-explorers.png
 imageAlt: Screenshot of Data Explorer website
 teckStack:
   - Svelte Kit

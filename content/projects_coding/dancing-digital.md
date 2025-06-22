@@ -4,7 +4,7 @@ tags:
   - open data
   - Wikidata
 
-image: /images/dancing-digital.png
+image: /images/coding/dancing-digital.png
 imageAlt: screen shot of Dancing Digital demo site
 teckStack:
   - Python

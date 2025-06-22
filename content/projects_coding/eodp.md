@@ -3,7 +3,7 @@ title: Extending Ocean Drilling Pursuits
 tags:
   - open science
 
-image: /images/eodp.png
+image: /images/coding/eodp.png
 imageAlt: Extending Ocean Drilling Project logo
 teckStack:
   - Python
