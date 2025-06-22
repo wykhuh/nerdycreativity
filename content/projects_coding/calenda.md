@@ -1,6 +1,5 @@
 ---
 title: CALeDNA
-date: 2020-01-01
 tags:
   - community science
 

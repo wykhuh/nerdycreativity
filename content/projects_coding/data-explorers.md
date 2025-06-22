@@ -1,6 +1,5 @@
 ---
 title: Data Explorers
-date: 2021-02-01
 tags:
   - community science
 

@@ -1,6 +1,5 @@
 ---
 title: Biodiversity of Los Angeles River
-date: 2025-06-19
 tags:
   - community science
   - GIS

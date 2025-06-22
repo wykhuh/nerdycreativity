@@ -1,6 +1,5 @@
 ---
 title: After iNaturalist
-date: 2021-02-01
 tags:
   - community science
 
