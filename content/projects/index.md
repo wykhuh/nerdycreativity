@@ -9,26 +9,20 @@ eleventyNavigation:
 
 I'm a nerd who like to make stuff. Here's some of the stuff that I've made.
 
-## GIS
-
-<div class="project-list">
-  {% for project in collections.projects %}
-    {% if project.data.projectType == 'GIS' %}
-      {% include "layouts/project-card.njk" %}
-    {% endif %}
-  {% endfor %}
-</div>
-
 ## Coding
 
-Projects I worked for fun or side projects.
+Projects I worked on as a software engineer for fun and at work.
 
 <div class="project-list">
-  {% for project in collections.projects %}
-    {% if project.data.projectType == 'coding' %}
-      {% include "layouts/project-card.njk" %}
-    {% endif %}
-  {% endfor %}
+  {% for project in collections.projects_coding %}{% include "project-card.njk" %}{% endfor %}
+</div>
+
+## GIS
+
+Projects I worked on as a student at Pasadena City College.
+
+<div class="project-list">
+  {% for project in collections.projects_gis %}{% include "project-card.njk" %}{% endfor %}
 </div>
 
 ## Paper Engineering - Structural Graphics
@@ -36,9 +30,5 @@ Projects I worked for fun or side projects.
 Projects I worked on as a paper engineer at Structural Graphics.
 
 <div class="project-list">
-  {% for project in collections.projects %}
-    {% if project.data.projectType == 'paper-sg' %}
-      {% include "layouts/project-card.njk" %}
-    {% endif %}
-  {% endfor %}
+  {% for project in collections.projects_paper_sg %}{% include "project-card.njk" %}{% endfor %}
 </div>
