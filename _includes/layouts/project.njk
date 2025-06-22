@@ -4,13 +4,26 @@ layout: "layouts/base.njk"
 
 <div class="project">
   <h1>{{ title }}</h1>
-  <div class="image-wrapper">
-    <img src="{{ image }}" alt="{{ imageAlt }}"/>
-  </div>
 
-  <div class="content prose">
-    {{ content | safe }}
-  </div>
+  <ul class="project-metadata">
+    {%- for tag in tags | filterTagList %}
+      {%- set tagUrl %}/tags/{{ tag | slugify }}/{% endset %}
+      <li>
+        <a href="{{ tagUrl }}" class="post-tag">{{ tag }}</a>
+        {%- if not loop.last %}, {% endif %}
+      </li>
+    {%- endfor %}
+  </ul>
+
+  {% if showProjectHero != false and image %}
+    <div class="image-wrapper">
+      <img src="{{ image }}" alt="{{ imageAlt }}"/>
+    </div>
+  {% endif %}
+
+  {% if youtube %}
+    <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/{{youtube}}" title="YouTube video player" frameborder="0"  referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  {% endif %}
 
   {% if siteUrl or repoUrl%}
     <h2>Links</h2>
@@ -29,6 +42,11 @@ layout: "layouts/base.njk"
       {% endif %}
     </ul>
   {% endif %}
+
+  <div class="content prose">
+    {{ content | safe }}
+  </div>
+
   {% if teckStack %}
     <h2>Tech Stack</h2>
 
@@ -39,3 +57,23 @@ layout: "layouts/base.njk"
     </ul>
   {% endif %}
 </div>
+
+{%- if projectType %}
+  {%- set previousPost = collections[projectType] | getPreviousCollectionItem %}
+  {%- set nextPost = collections[projectType] | getNextCollectionItem %}
+
+  {%- if nextPost or previousPost %}
+    <ul class="links-nextprev">
+      {%- if previousPost %}
+        <li class="links-nextprev-prev">
+          Previous: <a href="{{ previousPost.url }}">{{ previousPost.data.title }}</a>
+        </li>
+      {% endif %}
+      {%- if nextPost %}
+        <li class="links-nextprev-next">
+          Next: <a href="{{ nextPost.url }}">{{ nextPost.data.title }}</a>
+        </li>
+      {% endif %}
+    </ul>
+  {%- endif %}
+{%- endif %}

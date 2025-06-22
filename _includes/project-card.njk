@@ -1,0 +1,11 @@
+<div class="project-card">
+  {% if project.data.image %}<div class="image-wrapper">
+      <img src="{{ project.data.image }}" alt="{{ project.data.imageAlt }}"eleventy:widths="300">
+    </div>
+  {% endif %}
+  <div class="card-body">
+    <h3>
+      <a href="{{ project.url }}">{{ project.data.title }}</a>
+    </h3>
+  </div>
+</div>

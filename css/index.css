@@ -153,12 +153,6 @@ header {
   box-shadow: 0px 1px 5px var(--color-gray-50);
 }
 
-header:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
 header {
   display: flex;
   gap: 1em 0.5em;
@@ -332,24 +326,27 @@ h1.post-title a:hover {
 =============================== */
 
 .project-list {
-  background-color: bisque;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 1rem;
 }
 
 .project-card {
-  background-color: lightblue;
-  box-shadow: var(--box-shadow);
-  border-radius: 0.375rem;
+  border-radius: 0;
   overflow: hidden;
+  border: 1px solid var(--color-gray-20);
+}
+
+.project-card .image-wrapper {
+  /* background-color: #758543; */
 }
 
 .project-card .image-wrapper img {
   width: 100%;
-  height: auto;
-  border-top-left-radius: 0.375rem;
-  border-top-right-radius: 0.375rem;
+  height: 180px;
+  object-fit: contain;
+  border-bottom: 1px solid var(--color-gray-20);
+
   transition: transform 0.3s ease 0s;
 }
 
@@ -371,10 +368,6 @@ h1.post-title a:hover {
   text-decoration: underline;
 }
 
-.project-card .summary {
-  margin-bottom: 1rem;
-}
-
 .project-card a {
   display: inline-flex;
   align-items: center;
@@ -383,4 +376,24 @@ h1.post-title a:hover {
 
 .project-card a:hover {
   text-decoration: underline;
+}
+
+/* ===============================
+ project
+=============================== */
+
+.project-metadata {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 0.5em;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.project .image-wrapper img {
+  width: 100%;
+  height: 100%;
+  margin: 2rem 0;
+  transition: transform 0.3s ease 0s;
 }
