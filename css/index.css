@@ -9,9 +9,10 @@
 
 /* Theme colors */
 :root {
+  --color-gray-10: #f0f0f0;
   --color-gray-20: #e0e0e0;
   --color-gray-50: #c0c0c0;
-  --color-gray-90: #333;
+  --color-gray-90: #333333;
 
   --background-color: #fff;
 
@@ -28,6 +29,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
+    --color-gray-10: #f0f0f0;
     --color-gray-20: #e0e0e0;
     --color-gray-50: #c0c0c0;
     --color-gray-90: #dad8d8;
@@ -133,6 +135,9 @@ pre:not([class*="language-"]) {
 }
 code {
   word-break: break-all;
+  padding: 0.1rem 0.3rem;
+  background-color: var(--color-gray-10);
+  border-radius: 6px;
 }
 
 /* ===============================
