@@ -17,12 +17,12 @@ Projects I worked on as a software engineer for fun and at work.
   {% for project in collections.projects_coding | sortTitleAlphabetically %}{% include "project-card.njk" %}{% endfor %}
 </div>
 
-## GIS
+## GIS - Pasadena City College
 
-Projects I worked on as a student at Pasadena City College.
+Projects I worked on as a student at Pasadena City College's Geographic Information Systems and Technology certificate program
 
 <div class="project-list">
-  {% for project in collections.projects_gis | sortTitleAlphabetically %}{% include "project-card.njk" %}{% endfor %}
+  {% for project in collections.projects_gis_pcc | sortTitleAlphabetically %}{% include "project-card.njk" %}{% endfor %}
 </div>
 
 ## Paper Engineering - Structural Graphics

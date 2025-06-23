@@ -1,4 +1,4 @@
 export default {
-  tags: ["projects_gis"],
+  tags: ["projects_gis_pcc"],
   layout: "layouts/project.njk",
 };
