@@ -1,0 +1,16 @@
+.pdfviewer {
+  margin-top: 2rem;
+}
+
+button {
+  background-color: var(--primary);
+  border: 0;
+  border-radius: 6px;
+  padding: 0.5rem;
+  cursor: pointer;
+}
+
+button#zoomIn,
+button#zoomOut {
+  width: 2rem;
+}

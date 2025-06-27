@@ -1,0 +1,21 @@
+<style>
+  {% include "css/pdfviewer.css" %}
+</style>
+
+<section class="pdfviewer">
+  <div>
+    <button id="prev" type="button" title="previous page">Previous</button>
+    <span>Page: <span id="page_num"></span> / <span id="page_count"></span></span>
+    <button id="next" type="button" title="next page">Next</button>
+    <button id="zoomIn" type="button" title="zoom in">+</button>
+    <button id="zoomOut" type="button" title="zoom out">–</button>
+  </div>
+
+  <canvas id="the-canvas" style="border: 1px solid black;"></canvas>
+</section>
+
+<script src="/lib/pdfjs/generic-legacy/build/pdf.mjs" type="module"></script>
+<script>
+  import {init} from '/pdfviewer.js'
+  init('{{pdfUrl}}')
+</script>
