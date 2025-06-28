@@ -15,7 +15,7 @@
 </section>
 
 <script src="/lib/pdfjs/generic-legacy/build/pdf.mjs" type="module"></script>
-<script>
+<script type="module">
   import {init} from '/pdfviewer.js'
-  init('{{pdfUrl}}')
+  init('{{pdfUrl}}', {{pdfScale}})
 </script>

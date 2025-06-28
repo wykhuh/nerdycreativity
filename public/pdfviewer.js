@@ -141,7 +141,8 @@ function setupEventHandlers() {
   if (zoomOutEl) zoomOutEl.addEventListener("click", pdfViewZoomOut);
 }
 
-export async function init(url) {
+export async function init(url, defaultScale = 1) {
+  scale = defaultScale;
   setupEventHandlers();
 
   // download pdf

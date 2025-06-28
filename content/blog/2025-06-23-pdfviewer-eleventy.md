@@ -5,11 +5,11 @@ tags:
   - coding
 ---
 
-I wanted to add a PDF viewer to Eleventy.
+I wanted to add a PDF viewer to Eleventy using [PDF.js](https://mozilla.github.io/pdf.js/).
 
-You can install [PDF.js](https://mozilla.github.io/pdf.js/) from npm. However, this version only works on Firefox and Chrome. To get a version that works on Safari, you need to use the legacy build version.
+At first, I installed PDF.js from npm. However, the npm version only works on Firefox and Chrome. To get a version that works on Safari, I needed to use the legacy build version.
 
-Clone the PDF.js repo and install dependencies.
+I cloned PDF.js repo and installed dependencies.
 
 ```bash
 git clone https://github.com/mozilla/pdf.js.git
@@ -17,13 +17,13 @@ cd pdf.js
 npm install
 ```
 
-Build the legacy version.
+Then I built the legacy version.
 
 ```bash
 npx gulp generic-legacy
 ```
 
-This will generate `pdf.js` and `pdf.worker.js` in the `build/generic-legacy/build/` directory. Copy `pdf.js` and `pdf.worker.js` to `/public/lib/pdfjs/generic-legacy/build`.
+This generated `pdf.js` and `pdf.worker.js` in the `build/generic-legacy/build/` directory. I copied `pdf.js` and `pdf.worker.js` to `/public/lib/pdfjs/generic-legacy/build`.
 
 Then I put the code to create a viewer in `public/lib/pdfviewer.js`. The code is based on PDF.js [Prev/Next example](https://jsfiddle.net/pdfjs/wagvs9Lf/) and [mobile viewer example](https://github.com/mozilla/pdf.js/tree/master/examples/mobile-viewer).
 
@@ -180,7 +180,7 @@ export async function init(url) {
 }
 ```
 
-I added a template file in `_includes/pdfviewer.njk`. `pdfviewer.njk` calls the `init()` from `pdfviewer.js` with `pdfUrl` argument.
+I added a template file in `_includes/pdfviewer.njk`. `pdfviewer.njk` calls the `init()` from `pdfviewer.js` with `pdfUrl` and `pdfScale` arguments.
 
 ```html
 {% raw %}
@@ -203,15 +203,15 @@ I added a template file in `_includes/pdfviewer.njk`. `pdfviewer.njk` calls the 
 </section>
 
 <script src="/lib/pdfjs/generic-legacy/build/pdf.mjs" type="module"></script>
-<script>
-  import { init } from "/pdfviewer.js";
-  init("{{pdfUrl}}");
+<script type="module">
+  import {init} from '/pdfviewer.js'
+  init('{{pdfUrl}}', {{pdfScale}})
 </script>
 
 {% endraw %}
 ```
 
-Then in the file you want to add the map, include `pdfviewer.njk` and pass in the pdfUrl.
+Then in the file I want to add a pdf, I included `pdfviewer.njk` and passed in the `pdfUrl`.
 
 ```js
 {% raw %}
@@ -219,6 +219,18 @@ Then in the file you want to add the map, include `pdfviewer.njk` and pass in th
 {% include "pdfviewer.njk" %}
 {% endraw %}
 ```
+
+To adjust the size of the pdf, I passed in `pdfScale` argument. If it is not set, the value defaults to 1.
+
+```js
+{% raw %}
+{% set pdfUrl = '/pdfs/pcc-portfolio/inat_la_river.pdf' %}
+{% set pdfScale = '.4' %}
+{% include "pdfviewer.njk" %}
+{% endraw %}
+```
+
+Here's a PDF.
 
 {% set pdfUrl = '/pdfs/pcc-portfolio/inat_la_river.pdf' %}
 {% include "pdfviewer.njk" %}
