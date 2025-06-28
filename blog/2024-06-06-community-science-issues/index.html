@@ -1,14 +1,345 @@
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Issues in Community Science - from a community scientist POV</title>
-		<meta name="description" content="Website for me, a nerd who likes to create things.">
-		<link rel="alternate" href="/feed/feed.xml" type="application/atom+xml" title="Nerdy Creativity">
-		<link rel="alternate" href="/feed/feed.json" type="application/json" title="Nerdy Creativity">
-		
-		<style>/**
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Issues in Community Science - from a community scientist POV</title>
+    <meta name="description" content="Website for me, a nerd who likes to create things.">
+    <link rel="alternate" href="/eleventy-base-blog/feed/feed.xml" type="application/atom+xml" title="Nerdy Creativity">
+    
+    
+    
+    <style>
+      /* This is an arbitrary CSS string added to the bundle */
+/* Defaults */
+:root {
+  --font-family: -apple-system, system-ui, sans-serif;
+  --font-family-monospace: Consolas, Menlo, Monaco, Andale Mono WT, Andale Mono,
+    Lucida Console, Lucida Sans Typewriter, DejaVu Sans Mono,
+    Bitstream Vera Sans Mono, Liberation Mono, Nimbus Mono L, Courier New,
+    Courier, monospace;
+}
+
+/* Theme colors */
+:root {
+  --color-gray-10: #f0f0f0;
+  --color-gray-20: #e0e0e0;
+  --color-gray-50: #c0c0c0;
+  --color-gray-90: #333333;
+
+  --background-color: #fff;
+
+  --text-color: var(--color-gray-90);
+  --text-color-link: #dda15e;
+  --text-color-link-active: #bc6c25;
+  --text-color-link-visited: #758543;
+
+  --syntax-tab-size: 2;
+  --primary: #ccd5ae;
+}
+
+/* https://coolors.co/palette/606c38-283618-fefae0-dda15e-bc6c25
+["#606c38","#283618","#fefae0","#dda15e","#bc6c25"] */
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-gray-10: #f0f0f0;
+    --color-gray-20: #e0e0e0;
+    --color-gray-50: #c0c0c0;
+    --color-gray-90: #dad8d8;
+
+    /* --text-color is assigned to --color-gray-_ above */
+    --text-color-link: #1493fb;
+    --text-color-link-active: #6969f7;
+    --text-color-link-visited: #a6a6f8;
+
+    --background-color: #15202b;
+  }
+}
+
+/* Global stylesheet */
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0 auto;
+  font-family: var(--font-family);
+  color: var(--text-color);
+  background-color: var(--background-color);
+}
+html {
+  overflow-y: scroll;
+}
+
+/* https://www.a11yproject.com/posts/how-to-hide-content/ */
+.visually-hidden {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+p {
+  line-height: 1.5;
+}
+
+li {
+  line-height: 1.5;
+}
+
+a[href] {
+  color: var(--text-color-link);
+}
+a[href]:visited {
+  color: var(--text-color-link-visited);
+}
+a[href]:hover,
+a[href]:active {
+  color: var(--text-color-link-active);
+}
+
+main {
+  padding: 1rem;
+}
+main :first-child {
+  margin-top: 0;
+}
+
+.links-nextprev {
+  list-style: none;
+  border-top: 1px dashed var(--color-gray-20);
+  padding: 1em 0;
+}
+
+table {
+  margin: 1em 0;
+}
+table td,
+table th {
+  padding-right: 1em;
+}
+
+pre,
+code {
+  font-family: var(--font-family-monospace);
+}
+pre:not([class*="language-"]) {
+  margin: 0.5em 0;
+  line-height: 1.375; /* 22px /16 */
+  -moz-tab-size: var(--syntax-tab-size);
+  -o-tab-size: var(--syntax-tab-size);
+  tab-size: var(--syntax-tab-size);
+  -webkit-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+  direction: ltr;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+}
+code {
+  word-break: break-all;
+  padding: 0.1rem 0.3rem;
+  background-color: var(--color-gray-10);
+  border-radius: 6px;
+}
+
+/* ===============================
+layout
+=============================== */
+
+main,
+header {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+/* ===============================
+header
+=============================== */
+
+header {
+  box-shadow: 0px 1px 5px var(--color-gray-50);
+}
+
+header {
+  display: flex;
+  gap: 1em 0.5em;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 1em;
+}
+.home-link {
+  font-size: 1em; /* 16px /16 */
+  font-weight: 700;
+  margin-right: 2em;
+}
+.home-link:link:not(:hover) {
+  text-decoration: none;
+}
+
+/* ===============================
+Markdown header links
+=============================== */
+
+.header-anchor {
+  text-decoration: none;
+  font-style: normal;
+  font-size: 1em;
+  margin-left: 0.1em;
+}
+a[href].header-anchor,
+a[href].header-anchor:visited {
+  color: transparent;
+}
+a[href].header-anchor:focus,
+a[href].header-anchor:hover {
+  text-decoration: underline;
+}
+a[href].header-anchor:focus,
+:hover > a[href].header-anchor {
+  color: #aaa;
+}
+
+h2 + .header-anchor {
+  font-size: 1.5em;
+}
+
+/* ===============================
+nav
+=============================== */
+
+.nav {
+  display: flex;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.nav-item {
+  display: inline-block;
+  margin-right: 1em;
+}
+.nav-item a[href]:not(:hover) {
+  text-decoration: none;
+}
+.nav a[href][aria-current="page"] {
+  text-decoration: underline;
+}
+
+.nav-item a[href] {
+  color: var(--text-color-link-visited);
+}
+
+/* ===============================
+ posts lists
+=============================== */
+
+.postlist {
+  padding: 0;
+}
+.postlist-item {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  margin-bottom: 1em;
+}
+
+.postlist-date,
+.postlist-item:before {
+  font-size: 0.8125em; /* 13px /16 */
+  color: var(--color-gray-90);
+}
+.postlist-date {
+  word-spacing: -0.5px;
+}
+.postlist-link {
+  font-size: 1.1875em; /* 19px /16 */
+  font-weight: 700;
+  flex-basis: calc(100% - 1.5rem);
+  padding-left: 0.25em;
+  padding-right: 0.5em;
+  text-underline-position: from-font;
+  text-underline-offset: 0;
+  text-decoration-thickness: 1px;
+}
+.postlist-item-active .postlist-link {
+  font-weight: bold;
+}
+
+/* ===============================
+ posts tags
+=============================== */
+
+.post-tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: capitalize;
+  font-style: italic;
+}
+.postlist-item > .post-tag {
+  align-self: center;
+}
+
+/* ===============================
+ posts
+=============================== */
+
+.post {
+  /* margin:2rem 0; */
+  padding: 2rem 0;
+  /* background-color: #a6a6f8; */
+  /* border-top: 1px dashed var(--color-gray-50); */
+}
+
+.separator {
+  border: none;
+  height: 1px;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent,
+    transparent 5px,
+    var(--color-gray-50) 5px,
+    var(--color-gray-50) 10px
+  );
+}
+
+h1.post-title a {
+  text-decoration: none;
+  color: var(--text-color);
+}
+
+h1.post-title a:visited {
+  color: var(--text-color);
+}
+
+h1.post-title a:active,
+h1.post-title a:hover {
+  text-decoration: underline;
+}
+
+.post-metadata {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 0.5em;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.post-metadata time {
+  margin-right: 1em;
+}
+/**
  * okaidia theme for JavaScript, CSS and HTML
  * Loosely based on Monokai textmate theme by http://www.monokai.nl/
  * @author ocodia
@@ -136,387 +467,126 @@ pre[class*="language-"] {
  */
 
 pre[class*="language-diff-"] {
-	--eleventy-code-padding: 1.25em;
-	padding-left: var(--eleventy-code-padding);
-	padding-right: var(--eleventy-code-padding);
+  --eleventy-code-padding: 1.25em;
+  padding-left: var(--eleventy-code-padding);
+  padding-right: var(--eleventy-code-padding);
 }
 .token.deleted {
-	background-color: hsl(0, 51%, 37%);
-	color: inherit;
+  background-color: hsl(0, 51%, 37%);
+  color: inherit;
 }
 .token.inserted {
-	background-color: hsl(126, 31%, 39%);
-	color: inherit;
+  background-color: hsl(126, 31%, 39%);
+  color: inherit;
 }
 
 /* Make the + and - characters unselectable for copy/paste */
 .token.prefix.unchanged,
 .token.prefix.inserted,
 .token.prefix.deleted {
-	-webkit-user-select: none;
-	user-select: none;
-	display: inline-flex;
-	align-items: center;
-	justify-content: center;
-	padding-top: 2px;
-	padding-bottom: 2px;
+  -webkit-user-select: none;
+  user-select: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 2px;
+  padding-bottom: 2px;
 }
 .token.prefix.inserted,
 .token.prefix.deleted {
-	width: var(--eleventy-code-padding);
-	background-color: rgba(0,0,0,.2);
+  width: var(--eleventy-code-padding);
+  background-color: rgba(0, 0, 0, 0.2);
 }
 
 /* Optional: full-width background color */
 .token.inserted:not(.prefix),
 .token.deleted:not(.prefix) {
-	display: block;
-	margin-left: calc(-1 * var(--eleventy-code-padding));
-	margin-right: calc(-1 * var(--eleventy-code-padding));
-	text-decoration: none; /* override del, ins, mark defaults */
-	color: inherit; /* override del, ins, mark defaults */
+  display: block;
+  margin-left: calc(-1 * var(--eleventy-code-padding));
+  margin-right: calc(-1 * var(--eleventy-code-padding));
+  text-decoration: none; /* override del, ins, mark defaults */
+  color: inherit; /* override del, ins, mark defaults */
 }
-* { box-sizing: border-box; }
-/* Defaults */
-:root {
-	--font-family: -apple-system, system-ui, sans-serif;
-	--font-family-monospace: Consolas, Menlo, Monaco, Andale Mono WT, Andale Mono,
-		Lucida Console, Lucida Sans Typewriter, DejaVu Sans Mono,
-		Bitstream Vera Sans Mono, Liberation Mono, Nimbus Mono L, Courier New,
-		Courier, monospace;
-}
+    </style>
+  </head>
+  <body>
+    <a href="#main" id="skip-link" class="visually-hidden">Skip to main content</a>
 
-/* Theme colors */
-:root {
-	--color-gray-20: #e0e0e0;
-	--color-gray-50: #c0c0c0;
-	--color-gray-90: #333;
+    <header>
+      <a href="/eleventy-base-blog/" class="home-link">Nerdy Creativity</a>
+      <nav>
+        <h2 class="visually-hidden" id="top-level-navigation-menu">Top level navigation menu</h2>
+        <ul class="nav">
+            <li class="nav-item">
+              <a href="/eleventy-base-blog/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a href="/eleventy-base-blog/blog/">Archive</a>
+            </li>
+            <li class="nav-item">
+              <a href="/eleventy-base-blog/about/">About Me</a>
+            </li>
+            <li class="nav-item">
+              <a href="/eleventy-base-blog/projects/">Projects</a>
+            </li>
+        </ul>
+      </nav>
+    </header>
 
-	--background-color: #fff;
+    <main id="main">
+      
 
-	--text-color: var(--color-gray-90);
-	--text-color-link: #082840;
-	--text-color-link-active: #5f2b48;
-	--text-color-link-visited: #17050f;
 
-	--syntax-tab-size: 2;
-}
 
-@media (prefers-color-scheme: dark) {
-	:root {
-		--color-gray-20: #e0e0e0;
-		--color-gray-50: #c0c0c0;
-		--color-gray-90: #dad8d8;
-
-		/* --text-color is assigned to --color-gray-_ above */
-		--text-color-link: #1493fb;
-		--text-color-link-active: #6969f7;
-		--text-color-link-visited: #a6a6f8;
-
-		--background-color: #15202b;
-	}
-}
-
-/* Global stylesheet */
-* {
-	box-sizing: border-box;
-}
-
-html,
-body {
-	padding: 0;
-	margin: 0 auto;
-	font-family: var(--font-family);
-	color: var(--text-color);
-	background-color: var(--background-color);
-}
-html {
-	overflow-y: scroll;
-}
-body {
-	max-width: 40em;
-}
-
-/* https://www.a11yproject.com/posts/how-to-hide-content/ */
-.visually-hidden {
-	clip: rect(0 0 0 0);
-	clip-path: inset(50%);
-	height: 1px;
-	overflow: hidden;
-	position: absolute;
-	white-space: nowrap;
-	width: 1px;
-}
-
-p:last-child {
-	margin-bottom: 0;
-}
-p {
-	line-height: 1.5;
-}
-
-li {
-	line-height: 1.5;
-}
-
-a[href] {
-	color: var(--text-color-link);
-}
-a[href]:visited {
-	color: var(--text-color-link-visited);
-}
-a[href]:hover,
-a[href]:active {
-	color: var(--text-color-link-active);
-}
-
-main {
-	padding: 1rem;
-}
-main :first-child {
-	margin-top: 0;
-}
-
-header {
-	border-bottom: 1px dashed var(--color-gray-20);
-}
-header:after {
-	content: "";
-	display: table;
-	clear: both;
-}
-
-.links-nextprev {
-	list-style: none;
-	border-top: 1px dashed var(--color-gray-20);
-	padding: 1em 0;
-}
-
-table {
-	margin: 1em 0;
-}
-table td,
-table th {
-	padding-right: 1em;
-}
-
-pre,
-code {
-	font-family: var(--font-family-monospace);
-}
-pre:not([class*="language-"]) {
-	margin: 0.5em 0;
-	line-height: 1.375; /* 22px /16 */
-	-moz-tab-size: var(--syntax-tab-size);
-	-o-tab-size: var(--syntax-tab-size);
-	tab-size: var(--syntax-tab-size);
-	-webkit-hyphens: none;
-	-ms-hyphens: none;
-	hyphens: none;
-	direction: ltr;
-	text-align: left;
-	white-space: pre;
-	word-spacing: normal;
-	word-break: normal;
-}
-code {
-	word-break: break-all;
-}
-
-/* Header */
-header {
-	display: flex;
-	gap: 1em 0.5em;
-	flex-wrap: wrap;
-	align-items: center;
-	padding: 1em;
-}
-.home-link {
-	font-size: 1em; /* 16px /16 */
-	font-weight: 700;
-	margin-right: 2em;
-}
-.home-link:link:not(:hover) {
-	text-decoration: none;
-}
-
-/* Nav */
-.nav {
-	display: flex;
-	padding: 0;
-	margin: 0;
-	list-style: none;
-}
-.nav-item {
-	display: inline-block;
-	margin-right: 1em;
-}
-.nav-item a[href]:not(:hover) {
-	text-decoration: none;
-}
-.nav a[href][aria-current="page"] {
-	text-decoration: underline;
-}
-
-/* Posts list */
-.postlist {
-	list-style: none;
-	padding: 0;
-	padding-left: 1.5rem;
-}
-.postlist-item {
-	display: flex;
-	flex-wrap: wrap;
-	align-items: baseline;
-	counter-increment: start-from -1;
-	margin-bottom: 1em;
-}
-.postlist-item:before {
-	display: inline-block;
-	pointer-events: none;
-	content: "" counter(start-from, decimal-leading-zero) ". ";
-	line-height: 100%;
-	text-align: right;
-	margin-left: -1.5rem;
-}
-.postlist-date,
-.postlist-item:before {
-	font-size: 0.8125em; /* 13px /16 */
-	color: var(--color-gray-90);
-}
-.postlist-date {
-	word-spacing: -0.5px;
-}
-.postlist-link {
-	font-size: 1.1875em; /* 19px /16 */
-	font-weight: 700;
-	flex-basis: calc(100% - 1.5rem);
-	padding-left: 0.25em;
-	padding-right: 0.5em;
-	text-underline-position: from-font;
-	text-underline-offset: 0;
-	text-decoration-thickness: 1px;
-}
-.postlist-item-active .postlist-link {
-	font-weight: bold;
-}
-
-/* Tags */
-.post-tag {
-	display: inline-flex;
-	align-items: center;
-	justify-content: center;
-	text-transform: capitalize;
-	font-style: italic;
-}
-.postlist-item > .post-tag {
-	align-self: center;
-}
-
-.post-title:first-of-type {
-	border-top: 0;
-	padding-top: 0;
-}
-
-.post-title {
-	border-top: 1px dashed var(--color-gray-20);
-	padding-top: 1rem;
-}
-
-.post-title a {
-	text-decoration: none;
-}
-
-/* Tags list */
-.post-metadata {
-	display: inline-flex;
-	flex-wrap: wrap;
-	gap: 0.5em;
-	list-style: none;
-	padding: 0;
-	margin: 0;
-}
-.post-metadata time {
-	margin-right: 1em;
-}
-
-/* Direct Links / Markdown Headers */
-.header-anchor {
-	text-decoration: none;
-	font-style: normal;
-	font-size: 1em;
-	margin-left: 0.1em;
-}
-a[href].header-anchor,
-a[href].header-anchor:visited {
-	color: transparent;
-}
-a[href].header-anchor:focus,
-a[href].header-anchor:hover {
-	text-decoration: underline;
-}
-a[href].header-anchor:focus,
-:hover > a[href].header-anchor {
-	color: #aaa;
-}
-
-h2 + .header-anchor {
-	font-size: 1.5em;
-}</style>
-	</head>
-	<body>
-		<a href="#skip" class="visually-hidden">Skip to main content</a>
-
-		<header>
-			<a href="/" class="home-link">Nerdy Creativity</a>
-			<nav>
-				<h2 class="visually-hidden">Top level navigation menu</h2>
-				<ul class="nav">
-					<li class="nav-item"><a href="/">Home</a></li>
-					<li class="nav-item"><a href="/blog/">Archive</a></li>
-					<li class="nav-item"><a href="/about/">About Me</a></li>
-				</ul>
-			</nav>
-		</header>
-
-		<main id="skip">
-			
-<h1>Issues in Community Science - from a community scientist POV</h1>
+<h1 id="issues-in-community-science-from-a-community-scientist-pov">Issues in Community Science - from a community scientist POV</h1>
 
 <ul class="post-metadata">
-	<li><time datetime="2024-06-06">June 06, 2024</time></li>
-	<li><a href="/tags/community-science/" class="post-tag">community science</a></li>
+  <li>
+    <time datetime="2024-06-06">June 06, 2024</time>
+  </li>
+    <li>
+      <a href="/eleventy-base-blog/tags/community-science/" class="post-tag">community science</a>
+    </li>
 </ul>
 
 <p>One of the stated goals of community science is to allow people without a formal science education to participate in science. As a lifelong learner, I've turned two hobbies that started from pure curiosity into careers (paper engineering and software engineering). I tried to do it for a third time — using community science as a way to turn my love of science into a science career. I will discuss various obstacles and DEI issues I encountered in community science as an adult informal learner from groups under-represented in STEM. I hope my first-hand experience as a learner and mentor in informal learning will provide community science practitioners ideas on how to make their programs more welcoming, inclusive, and equitable for their community scientists.</p>
-<h2 id="my-science-journey" tabindex="-1">My science journey <a class="header-anchor" href="#my-science-journey">#</a></h2>
+<h2 id="my-science-journey">My science journey</h2>
 <p>I got interested in science after graduating from college. I spent years reading science books aimed at the general public, and attending public events at Griffith Observatory, Natural History Museum of Los Angeles, NASA JPL, and state/national parks to foster my interest in science. It took years of positive experiences with people and institutions that are dedicated to public outreach to get me to the point of wanting to pursue a science career.</p>
 <p>I started volunteering as a community scientist for CALeDNA, a community science project from the University of California, in order to gain experience of working with scientists. For three years, I served as CALeDNA's volunteer software developer as a way of combining my interest in coding, science, and public outreach. I was also given the chance to co-develop a project for CALeDNA about the Los Angeles River. Unfortunately, by the time I ended my involvement with the program, I gave up the idea of pursuing a science career because I felt like I didn't belong in science and my voice didn't matter. That experience has caused lifelong emotional scars.</p>
-<h2 id="public-outreach-informal-education" tabindex="-1">Public outreach, informal education <a class="header-anchor" href="#public-outreach-informal-education">#</a></h2>
-<p>I believe community science project organizers should be trained in science communication and informal education. When I became a volunteer interpretive guide for NHMLA, I was required to undergo training about how to create positive experiences for museum visitors. Communicating science to the general public is different from communicating science to scientists. Teaching informal learners is different from teaching students in a formal classroom setting. Teaching adults is different from teaching kids.</p>
+<h2 id="public-outreach-informal-education">Public outreach, informal education</h2>
+<p>I believe community science project organizers should be trained in science communication and informal education. When I became a volunteer interpretive guide for NHMLAC, I was required to undergo training about how to create positive experiences for museum visitors. Communicating science to the general public is different from communicating science to scientists. Teaching informal learners is different from teaching students in a formal classroom setting. Teaching adults is different from teaching kids.</p>
 <p>Unfortunately, those skills aren't emphasized or rewarded in traditional science academia. As a consequence, some science researchers who run community science projects lack the skills or motivations to create positive experiences for their community scientists. I once talked to someone enrolled in a graduate program for citizen science, and they said they don't feel adequately trained in informal education. Even community science practitioners who focus on the educational aspect of community science tend to focus on education in a classroom setting or childhood education. For adult informal learners like myself, it's a total crapshoot on whether the community science program they participate in will nurture or hinder their interest in science.</p>
-<h2 id="data-collection" tabindex="-1">Data collection <a class="header-anchor" href="#data-collection">#</a></h2>
+<h2 id="data-collection">Data collection</h2>
 <p>Most community science programs ask participants to help collect data. I participated in several community science projects, but I got bored. The data collection tasks were very prescriptive - do this, and that, and this. I know many community scientists are perfectly happy with collecting data, but I'm not one of those people. Data collection didn't spark the same degree of curiosity-driven inquiry and experimentation that I experienced while learning paper engineering and coding. Plus, I had no idea what happened to the data I collected. The results were published in paywalled articles that I couldn't access, in jargon-filled language that I couldn't understand.</p>
 <p>Community science programs that aim to broaden participation in science but limits community scientists to only data collecting is like a music teacher trying to get students excited about music but limits them to only playing the scales. Yes, data collection is an important skill, but where are the opportunities for community scientists to use their curiosity, creativity, and problem solving skills? IMO, limiting community scientists to just data collecting deepens the divide between scientists and community scientists because it sends the message that only certain people are allowed to do more. As an informal learner with two STEAM careers, I'm very well aware of what informal learners are capable of if given the chance. In order to create engaging experiences for community scientists, programs should provide a variety of ways for people to participate at every stage of the project.</p>
-<h2 id="equitable-community-science" tabindex="-1">Equitable community science <a class="header-anchor" href="#equitable-community-science">#</a></h2>
+<h2 id="equitable-community-science">Equitable community science</h2>
 <p>The topic of giving community scientists the opportunity to do more is an ethical issue about the relationship between scientists and local community members. Researchers are relying on the work of community members to help the researchers get funding, publications, and degrees for their students. What are the community members getting in return? IMO, community science projects that focus on the needs of the researchers without creating opportunities that are meaningful to the community members, are engaging in another form of parachute science.</p>
-<p>In order to create an equitable relationship between scientists and local community members, both sides need to benefit from the relationship. The type of benefits that community members are interested in can vary from project to project, and person to person. Some might only want to collect data. Some might want to co-develop a project. Some might want to analyze the data and co-author papers. Some might want translate the project information into their native language. Some might want to make TicTock videos. By moving away from the mentality that defines “real” science in terms of publications, and embracing the different ways that community scientists find meaning in their contributions, we can move closer to creating a science that is open to all.</p>
-<h2 id="environmental-justice-and-dei" tabindex="-1">Environmental justice &amp; DEI <a class="header-anchor" href="#environmental-justice-and-dei">#</a></h2>
+<p>In order to create an equitable relationship between scientists and local community members, both sides need to benefit from the relationship. The type of benefits that community members are interested in can vary from project to project, and person to person. Some might only want to collect data. Some might want to co-develop a project. Some might want to analyze the data and co-author papers. Some might want translate the project information into their native language. Some might want to make TikTok videos. By moving away from the mentality that defines “real” science in terms of publications, and embracing the different ways that community scientists find meaning in their contributions, we can move closer to creating a science that is open to all.</p>
+<h2 id="environmental-justice-and-dei">Environmental justice &amp; DEI</h2>
 <p>My parents came from low income families in China. When my parents immigrated to the US for better economic opportunities, they didn't speak English, which greatly limited the types of jobs they could get. Because of my parents' limited income, we lived in low income, predominantly Hispanic, inner city neighborhoods that had various environmental issues.</p>
 <p>One trend I've noticed in DEI discussions in community science is that a lot of DEI discussions are centered around environmental justice. I've talked to people involved in environmental justice who are dismissive of community science programs that focus on basic research. I've talked to people involved in basic research who admire the fact that environmental justice programs work with poor or marginalized communities, but do nothing to reach out to those communities themselves.</p>
 <p>I think it is classist and elitist to make the assumption that people from poor or marginalized communities wouldn't be interested in community science programs about basic research. Yes, we need to take care of the basics such as clean water and air so that people can survive. But we also need to give people the chance to thrive. And for some people, being involved in science to better understand the universe we live in is their way to thrive. In an equitable world, people from poor marginalized communities should have as much of a chance to do basic research as people from middle class or wealthy communities.</p>
-<h2 id="closing-thoughts" tabindex="-1">Closing thoughts <a class="header-anchor" href="#closing-thoughts">#</a></h2>
+<h2 id="closing-thoughts">Closing thoughts</h2>
 <p>In order to deal with global problems such as climate change and pandemics, we need more people involved in science. Getting involved in community science is one way people can develop positive feelings about science. However, community science isn't always as open and welcoming as it could be. If the point of community science is to widen who can participate in science, then the effect the program has on the lives of the participants should be one way to measure the success of the program. In order for community science to reach its full potential, practitioners need to create safe welcoming spaces where every community scientist can reach their full potential.</p>
-<h3 id="notes" tabindex="-1">Notes <a class="header-anchor" href="#notes">#</a></h3>
+<h3 id="notes">Notes</h3>
 <p>This post was part of <a href="https://participatorysciences.org/conferences/2024-aaps-conference/2024-caps-poster-discussion-sessions/#equity-diversity-inclusion">2024 Conference for Advancing the Participatory Sciences: Equity, Diversity, and Inclusion</a> Discussion session.</p>
 
-<ul class="links-nextprev"><li>Previous: <a href="/blog/2015-05-11-making-is-making/">Paper or pixels, making is making</a></li><li>Next: <a href="/blog/2024-06-24-summer-learning/">Summer Learning</a></li>
-</ul>
+    <ul class="links-nextprev">
+        <li class="links-nextprev-prev">
+          Previous: <a href="/eleventy-base-blog/blog/2015-05-11-making-is-making/">Paper or pixels, making is making</a>
+        </li>
+      
+        <li class="links-nextprev-next">
+          Next: <a href="/eleventy-base-blog/blog/2024-06-24-summer-learning/">Summer Learning</a>
+        </li>
+      
+    </ul>
 
-		</main>
+    </main>
 
-		<footer></footer>
+    <footer></footer>
 
-		<!-- This page `/blog/2024-06-06-community-science-issues/` was built on 2025-06-20T05:34:10.900Z -->
-	</body>
+    <!-- This page `/blog/2024-06-06-community-science-issues/` was built on 2025-06-28T04:51:12.245Z -->
+    <script type="module" src="/eleventy-base-blog"></script>
+  </body>
 </html>

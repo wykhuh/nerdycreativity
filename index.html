@@ -1,428 +1,559 @@
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Nerdy Creativity</title>
-		<meta name="description" content="Website for me, a nerd who likes to create things.">
-		<link rel="alternate" href="/feed/feed.xml" type="application/atom+xml" title="Nerdy Creativity">
-		<link rel="alternate" href="/feed/feed.json" type="application/json" title="Nerdy Creativity">
-		
-		<style>* { box-sizing: border-box; }
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nerdy Creativity</title>
+    <meta name="description" content="Website for me, a nerd who likes to create things.">
+    <link rel="alternate" href="/eleventy-base-blog/feed/feed.xml" type="application/atom+xml" title="Nerdy Creativity">
+    
+    
+    
+    <style>
+      /* This is an arbitrary CSS string added to the bundle */
 /* Defaults */
 :root {
-	--font-family: -apple-system, system-ui, sans-serif;
-	--font-family-monospace: Consolas, Menlo, Monaco, Andale Mono WT, Andale Mono,
-		Lucida Console, Lucida Sans Typewriter, DejaVu Sans Mono,
-		Bitstream Vera Sans Mono, Liberation Mono, Nimbus Mono L, Courier New,
-		Courier, monospace;
+  --font-family: -apple-system, system-ui, sans-serif;
+  --font-family-monospace: Consolas, Menlo, Monaco, Andale Mono WT, Andale Mono,
+    Lucida Console, Lucida Sans Typewriter, DejaVu Sans Mono,
+    Bitstream Vera Sans Mono, Liberation Mono, Nimbus Mono L, Courier New,
+    Courier, monospace;
 }
 
 /* Theme colors */
 :root {
-	--color-gray-20: #e0e0e0;
-	--color-gray-50: #c0c0c0;
-	--color-gray-90: #333;
+  --color-gray-10: #f0f0f0;
+  --color-gray-20: #e0e0e0;
+  --color-gray-50: #c0c0c0;
+  --color-gray-90: #333333;
 
-	--background-color: #fff;
+  --background-color: #fff;
 
-	--text-color: var(--color-gray-90);
-	--text-color-link: #082840;
-	--text-color-link-active: #5f2b48;
-	--text-color-link-visited: #17050f;
+  --text-color: var(--color-gray-90);
+  --text-color-link: #dda15e;
+  --text-color-link-active: #bc6c25;
+  --text-color-link-visited: #758543;
 
-	--syntax-tab-size: 2;
+  --syntax-tab-size: 2;
+  --primary: #ccd5ae;
 }
 
+/* https://coolors.co/palette/606c38-283618-fefae0-dda15e-bc6c25
+["#606c38","#283618","#fefae0","#dda15e","#bc6c25"] */
+
 @media (prefers-color-scheme: dark) {
-	:root {
-		--color-gray-20: #e0e0e0;
-		--color-gray-50: #c0c0c0;
-		--color-gray-90: #dad8d8;
+  :root {
+    --color-gray-10: #f0f0f0;
+    --color-gray-20: #e0e0e0;
+    --color-gray-50: #c0c0c0;
+    --color-gray-90: #dad8d8;
 
-		/* --text-color is assigned to --color-gray-_ above */
-		--text-color-link: #1493fb;
-		--text-color-link-active: #6969f7;
-		--text-color-link-visited: #a6a6f8;
+    /* --text-color is assigned to --color-gray-_ above */
+    --text-color-link: #1493fb;
+    --text-color-link-active: #6969f7;
+    --text-color-link-visited: #a6a6f8;
 
-		--background-color: #15202b;
-	}
+    --background-color: #15202b;
+  }
 }
 
 /* Global stylesheet */
 * {
-	box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 html,
 body {
-	padding: 0;
-	margin: 0 auto;
-	font-family: var(--font-family);
-	color: var(--text-color);
-	background-color: var(--background-color);
+  padding: 0;
+  margin: 0 auto;
+  font-family: var(--font-family);
+  color: var(--text-color);
+  background-color: var(--background-color);
 }
 html {
-	overflow-y: scroll;
-}
-body {
-	max-width: 40em;
+  overflow-y: scroll;
 }
 
 /* https://www.a11yproject.com/posts/how-to-hide-content/ */
 .visually-hidden {
-	clip: rect(0 0 0 0);
-	clip-path: inset(50%);
-	height: 1px;
-	overflow: hidden;
-	position: absolute;
-	white-space: nowrap;
-	width: 1px;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
 }
 
 p:last-child {
-	margin-bottom: 0;
+  margin-bottom: 0;
 }
 p {
-	line-height: 1.5;
+  line-height: 1.5;
 }
 
 li {
-	line-height: 1.5;
+  line-height: 1.5;
 }
 
 a[href] {
-	color: var(--text-color-link);
+  color: var(--text-color-link);
 }
 a[href]:visited {
-	color: var(--text-color-link-visited);
+  color: var(--text-color-link-visited);
 }
 a[href]:hover,
 a[href]:active {
-	color: var(--text-color-link-active);
+  color: var(--text-color-link-active);
 }
 
 main {
-	padding: 1rem;
+  padding: 1rem;
 }
 main :first-child {
-	margin-top: 0;
-}
-
-header {
-	border-bottom: 1px dashed var(--color-gray-20);
-}
-header:after {
-	content: "";
-	display: table;
-	clear: both;
+  margin-top: 0;
 }
 
 .links-nextprev {
-	list-style: none;
-	border-top: 1px dashed var(--color-gray-20);
-	padding: 1em 0;
+  list-style: none;
+  border-top: 1px dashed var(--color-gray-20);
+  padding: 1em 0;
 }
 
 table {
-	margin: 1em 0;
+  margin: 1em 0;
 }
 table td,
 table th {
-	padding-right: 1em;
+  padding-right: 1em;
 }
 
 pre,
 code {
-	font-family: var(--font-family-monospace);
+  font-family: var(--font-family-monospace);
 }
 pre:not([class*="language-"]) {
-	margin: 0.5em 0;
-	line-height: 1.375; /* 22px /16 */
-	-moz-tab-size: var(--syntax-tab-size);
-	-o-tab-size: var(--syntax-tab-size);
-	tab-size: var(--syntax-tab-size);
-	-webkit-hyphens: none;
-	-ms-hyphens: none;
-	hyphens: none;
-	direction: ltr;
+  margin: 0.5em 0;
+  line-height: 1.375; /* 22px /16 */
+  -moz-tab-size: var(--syntax-tab-size);
+  -o-tab-size: var(--syntax-tab-size);
+  tab-size: var(--syntax-tab-size);
+  -webkit-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+  direction: ltr;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+}
+code {
+  word-break: break-all;
+  padding: 0.1rem 0.3rem;
+  background-color: var(--color-gray-10);
+  border-radius: 6px;
+}
+
+/* ===============================
+layout
+=============================== */
+
+main,
+header {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+/* ===============================
+header
+=============================== */
+
+header {
+  box-shadow: 0px 1px 5px var(--color-gray-50);
+}
+
+header {
+  display: flex;
+  gap: 1em 0.5em;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 1em;
+}
+.home-link {
+  font-size: 1em; /* 16px /16 */
+  font-weight: 700;
+  margin-right: 2em;
+}
+.home-link:link:not(:hover) {
+  text-decoration: none;
+}
+
+/* ===============================
+Markdown header links
+=============================== */
+
+.header-anchor {
+  text-decoration: none;
+  font-style: normal;
+  font-size: 1em;
+  margin-left: 0.1em;
+}
+a[href].header-anchor,
+a[href].header-anchor:visited {
+  color: transparent;
+}
+a[href].header-anchor:focus,
+a[href].header-anchor:hover {
+  text-decoration: underline;
+}
+a[href].header-anchor:focus,
+:hover > a[href].header-anchor {
+  color: #aaa;
+}
+
+h2 + .header-anchor {
+  font-size: 1.5em;
+}
+
+/* ===============================
+nav
+=============================== */
+
+.nav {
+  display: flex;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.nav-item {
+  display: inline-block;
+  margin-right: 1em;
+}
+.nav-item a[href]:not(:hover) {
+  text-decoration: none;
+}
+.nav a[href][aria-current="page"] {
+  text-decoration: underline;
+}
+
+.nav-item a[href] {
+  color: var(--text-color-link-visited);
+}
+
+/* ===============================
+ posts lists
+=============================== */
+
+.postlist {
+  padding: 0;
+}
+.postlist-item {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  margin-bottom: 1em;
+}
+
+.postlist-date,
+.postlist-item:before {
+  font-size: 0.8125em; /* 13px /16 */
+  color: var(--color-gray-90);
+}
+.postlist-date {
+  word-spacing: -0.5px;
+}
+.postlist-link {
+  font-size: 1.1875em; /* 19px /16 */
+  font-weight: 700;
+  flex-basis: calc(100% - 1.5rem);
+  padding-left: 0.25em;
+  padding-right: 0.5em;
+  text-underline-position: from-font;
+  text-underline-offset: 0;
+  text-decoration-thickness: 1px;
+}
+.postlist-item-active .postlist-link {
+  font-weight: bold;
+}
+
+/* ===============================
+ posts tags
+=============================== */
+
+.post-tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: capitalize;
+  font-style: italic;
+}
+.postlist-item > .post-tag {
+  align-self: center;
+}
+
+/* ===============================
+ posts
+=============================== */
+
+.post {
+  /* margin:2rem 0; */
+  padding: 2rem 0;
+  /* background-color: #a6a6f8; */
+  /* border-top: 1px dashed var(--color-gray-50); */
+}
+
+.separator {
+  border: none;
+  height: 1px;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent,
+    transparent 5px,
+    var(--color-gray-50) 5px,
+    var(--color-gray-50) 10px
+  );
+}
+
+h1.post-title a {
+  text-decoration: none;
+  color: var(--text-color);
+}
+
+h1.post-title a:visited {
+  color: var(--text-color);
+}
+
+h1.post-title a:active,
+h1.post-title a:hover {
+  text-decoration: underline;
+}
+
+.post-metadata {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 0.5em;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.post-metadata time {
+  margin-right: 1em;
+}
+/**
+ * okaidia theme for JavaScript, CSS and HTML
+ * Loosely based on Monokai textmate theme by http://www.monokai.nl/
+ * @author ocodia
+ */
+
+code[class*="language-"],
+pre[class*="language-"] {
+	color: #f8f8f2;
+	background: none;
+	text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+	font-size: 1em;
 	text-align: left;
 	white-space: pre;
 	word-spacing: normal;
 	word-break: normal;
-}
-code {
-	word-break: break-all;
+	word-wrap: normal;
+	line-height: 1.5;
+
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
+	tab-size: 4;
+
+	-webkit-hyphens: none;
+	-moz-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
 }
 
-/* Header */
-header {
-	display: flex;
-	gap: 1em 0.5em;
-	flex-wrap: wrap;
-	align-items: center;
+/* Code blocks */
+pre[class*="language-"] {
 	padding: 1em;
-}
-.home-link {
-	font-size: 1em; /* 16px /16 */
-	font-weight: 700;
-	margin-right: 2em;
-}
-.home-link:link:not(:hover) {
-	text-decoration: none;
+	margin: .5em 0;
+	overflow: auto;
+	border-radius: 0.3em;
 }
 
-/* Nav */
-.nav {
-	display: flex;
-	padding: 0;
-	margin: 0;
-	list-style: none;
-}
-.nav-item {
-	display: inline-block;
-	margin-right: 1em;
-}
-.nav-item a[href]:not(:hover) {
-	text-decoration: none;
-}
-.nav a[href][aria-current="page"] {
-	text-decoration: underline;
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+	background: #272822;
 }
 
-/* Posts list */
-.postlist {
-	list-style: none;
-	padding: 0;
-	padding-left: 1.5rem;
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+	padding: .1em;
+	border-radius: .3em;
+	white-space: normal;
 }
-.postlist-item {
-	display: flex;
-	flex-wrap: wrap;
-	align-items: baseline;
-	counter-increment: start-from -1;
-	margin-bottom: 1em;
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+	color: #8292a2;
 }
-.postlist-item:before {
-	display: inline-block;
-	pointer-events: none;
-	content: "" counter(start-from, decimal-leading-zero) ". ";
-	line-height: 100%;
-	text-align: right;
-	margin-left: -1.5rem;
+
+.token.punctuation {
+	color: #f8f8f2;
 }
-.postlist-date,
-.postlist-item:before {
-	font-size: 0.8125em; /* 13px /16 */
-	color: var(--color-gray-90);
+
+.token.namespace {
+	opacity: .7;
 }
-.postlist-date {
-	word-spacing: -0.5px;
+
+.token.property,
+.token.tag,
+.token.constant,
+.token.symbol,
+.token.deleted {
+	color: #f92672;
 }
-.postlist-link {
-	font-size: 1.1875em; /* 19px /16 */
-	font-weight: 700;
-	flex-basis: calc(100% - 1.5rem);
-	padding-left: 0.25em;
-	padding-right: 0.5em;
-	text-underline-position: from-font;
-	text-underline-offset: 0;
-	text-decoration-thickness: 1px;
+
+.token.boolean,
+.token.number {
+	color: #ae81ff;
 }
-.postlist-item-active .postlist-link {
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+	color: #a6e22e;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string,
+.token.variable {
+	color: #f8f8f2;
+}
+
+.token.atrule,
+.token.attr-value,
+.token.function,
+.token.class-name {
+	color: #e6db74;
+}
+
+.token.keyword {
+	color: #66d9ef;
+}
+
+.token.regex,
+.token.important {
+	color: #fd971f;
+}
+
+.token.important,
+.token.bold {
 	font-weight: bold;
 }
-
-/* Tags */
-.post-tag {
-	display: inline-flex;
-	align-items: center;
-	justify-content: center;
-	text-transform: capitalize;
+.token.italic {
 	font-style: italic;
 }
-.postlist-item > .post-tag {
-	align-self: center;
+
+.token.entity {
+	cursor: help;
+}
+/*
+ * New diff- syntax
+ */
+
+pre[class*="language-diff-"] {
+  --eleventy-code-padding: 1.25em;
+  padding-left: var(--eleventy-code-padding);
+  padding-right: var(--eleventy-code-padding);
+}
+.token.deleted {
+  background-color: hsl(0, 51%, 37%);
+  color: inherit;
+}
+.token.inserted {
+  background-color: hsl(126, 31%, 39%);
+  color: inherit;
 }
 
-.post-title:first-of-type {
-	border-top: 0;
-	padding-top: 0;
+/* Make the + and - characters unselectable for copy/paste */
+.token.prefix.unchanged,
+.token.prefix.inserted,
+.token.prefix.deleted {
+  -webkit-user-select: none;
+  user-select: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+.token.prefix.inserted,
+.token.prefix.deleted {
+  width: var(--eleventy-code-padding);
+  background-color: rgba(0, 0, 0, 0.2);
 }
 
-.post-title {
-	border-top: 1px dashed var(--color-gray-20);
-	padding-top: 1rem;
+/* Optional: full-width background color */
+.token.inserted:not(.prefix),
+.token.deleted:not(.prefix) {
+  display: block;
+  margin-left: calc(-1 * var(--eleventy-code-padding));
+  margin-right: calc(-1 * var(--eleventy-code-padding));
+  text-decoration: none; /* override del, ins, mark defaults */
+  color: inherit; /* override del, ins, mark defaults */
+}
+.pdfviewer {
+  margin-top: 2rem;
 }
 
-.post-title a {
-	text-decoration: none;
+button {
+  background-color: var(--primary);
+  border: 0;
+  border-radius: 6px;
+  padding: 0.5rem;
+  cursor: pointer;
 }
 
-/* Tags list */
-.post-metadata {
-	display: inline-flex;
-	flex-wrap: wrap;
-	gap: 0.5em;
-	list-style: none;
-	padding: 0;
-	margin: 0;
+button#zoomIn,
+button#zoomOut {
+  width: 2rem;
 }
-.post-metadata time {
-	margin-right: 1em;
-}
+#map {
+    height: 400px;
+  }
+    </style>
+  </head>
+  <body>
+    <a href="#main" id="skip-link" class="visually-hidden">Skip to main content</a>
 
-/* Direct Links / Markdown Headers */
-.header-anchor {
-	text-decoration: none;
-	font-style: normal;
-	font-size: 1em;
-	margin-left: 0.1em;
-}
-a[href].header-anchor,
-a[href].header-anchor:visited {
-	color: transparent;
-}
-a[href].header-anchor:focus,
-a[href].header-anchor:hover {
-	text-decoration: underline;
-}
-a[href].header-anchor:focus,
-:hover > a[href].header-anchor {
-	color: #aaa;
-}
+    <header>
+      <a href="/eleventy-base-blog/" class="home-link">Nerdy Creativity</a>
+      <nav>
+        <h2 class="visually-hidden" id="top-level-navigation-menu">Top level navigation menu</h2>
+        <ul class="nav">
+            <li class="nav-item">
+              <a href="/eleventy-base-blog/" aria-current="page">Home</a>
+            </li>
+            <li class="nav-item">
+              <a href="/eleventy-base-blog/blog/">Archive</a>
+            </li>
+            <li class="nav-item">
+              <a href="/eleventy-base-blog/about/">About Me</a>
+            </li>
+            <li class="nav-item">
+              <a href="/eleventy-base-blog/projects/">Projects</a>
+            </li>
+        </ul>
+      </nav>
+    </header>
 
-h2 + .header-anchor {
-	font-size: 1.5em;
-}</style>
-	</head>
-	<body>
-		<a href="#skip" class="visually-hidden">Skip to main content</a>
-
-		<header>
-			<a href="/" class="home-link">Nerdy Creativity</a>
-			<nav>
-				<h2 class="visually-hidden">Top level navigation menu</h2>
-				<ul class="nav">
-					<li class="nav-item"><a href="/" aria-current="page">Home</a></li>
-					<li class="nav-item"><a href="/blog/">Archive</a></li>
-					<li class="nav-item"><a href="/about/">About Me</a></li>
-				</ul>
-			</nav>
-		</header>
-
-		<main id="skip">
-			
-
-
-
-
-	<h1 class="post-title"><a href="/blog/2024-06-24-summer-learning/">Summer Learning</a></h1>
-
-	<ul class="post-metadata">
-		<li><time datetime="2024-06-24">June 24, 2024</time></li>
-		<li><a href="/tags/life-long-learning/" class="post-tag">life-long learning</a></li>
-	</ul>
-
-	<p>List of courses, books, etc that I'm doing over the summer</p>
-<p>Coursera. Essential Linear Algebra for Data Science, University of Colorado Boulder<br>
-start: June 9<br>
-in progress</p>
-<p>ARSET - Fundamentals of remote sensing<br>
-start: June 19<br>
-done: June 19</p>
-<p>ARSET - NASA's Earth Observing Fleet<br>
-start: June 19<br>
-done: June 19</p>
-<p>EcoDataScience - tidycensus, <a href="https://github.com/ecodatascience/2024-01-17-tidycensus">link</a><br>
-start: june 18<br>
-done: June 18</p>
-<p>Analyzing US Census Data: Methods, Maps, and Models in R, <a href="https://walker-data.com/census-r/">link</a><br>
-start: june 18<br>
-in progress</p>
-<p>udemy - ecology in R, <a href="https://www.udemy.com/course/ecology-in-r/learn/lecture/18207604">link</a><br>
-start: june 22<br>
-in progress</p>
-<p>Statistical Rethinking, <a href="https://github.com/rmcelreath/stat_rethinking_2024">link</a><br>
-start: june 23<br>
-in progress</p>
-<p>The Art of Statistics: How to Learn from Data<br>
-start: june 23<br>
-in progress</p>
-<p>3Blue1Brown - Essence of linear algebra<br>
-start: June 24<br>
-in progress</p>
-<p>Introduction to rasters with terra, <a href="https://jflowernet.github.io/intro-terra-ecodatascience/">link</a><br>
-start: June 24<br>
-done: June 25</p>
-<p>Build Go Apps That Scale on AWS, <a href="https://frontendmasters.com/courses/go-aws/">link</a><br>
-start: July 13<br>
-in progress</p>
-<p>Full Stack for Front-End Engineers, v3, <a href="https://frontendmasters.com/courses/fullstack-v3/">link</a><br>
-start: July 14<br>
-done: Aug 4</p>
-<p>Networking Fundamentals, <a href="https://www.youtube.com/playlist?list=PLIFyRwBY_4bRLmKfP1KnZA6rZbRHtxmXi">link</a><br>
-start: July 15<br>
-done: July 15</p>
-<p>Complete Intro to Containers, v2, <a href="https://frontendmasters.com/workshops/complete-intro-containers-v2/">link</a><br>
-start: July 20<br>
-in progress</p>
-<p>Learning Docker, <a href="https://www.linkedin.com/learning/learning-docker-17236240/">link</a><br>
-start: July 19<br>
-done: July 20</p>
-<p>Complete Intro to Linux and the Command-Line, <a href="https://frontendmasters.com/courses/linux-command-line/">link</a><br>
-start: July 20<br>
-done: Aug 4</p>
-<p>Small Language Models, <a href="https://github.com/jdportercode/TAP24/">link</a><br>
-start: Aug 13<br>
-done: Aug 14</p>
-
-
-
-	<h1 class="post-title"><a href="/blog/2024-06-06-community-science-issues/">Issues in Community Science - from a community scientist POV</a></h1>
-
-	<ul class="post-metadata">
-		<li><time datetime="2024-06-06">June 06, 2024</time></li>
-		<li><a href="/tags/community-science/" class="post-tag">community science</a></li>
-	</ul>
-
-	<p>One of the stated goals of community science is to allow people without a formal science education to participate in science. As a lifelong learner, I've turned two hobbies that started from pure curiosity into careers (paper engineering and software engineering). I tried to do it for a third time — using community science as a way to turn my love of science into a science career. I will discuss various obstacles and DEI issues I encountered in community science as an adult informal learner from groups under-represented in STEM. I hope my first-hand experience as a learner and mentor in informal learning will provide community science practitioners ideas on how to make their programs more welcoming, inclusive, and equitable for their community scientists.</p>
-<h2 id="my-science-journey" tabindex="-1">My science journey <a class="header-anchor" href="#my-science-journey">#</a></h2>
-<p>I got interested in science after graduating from college. I spent years reading science books aimed at the general public, and attending public events at Griffith Observatory, Natural History Museum of Los Angeles, NASA JPL, and state/national parks to foster my interest in science. It took years of positive experiences with people and institutions that are dedicated to public outreach to get me to the point of wanting to pursue a science career.</p>
-<p>I started volunteering as a community scientist for CALeDNA, a community science project from the University of California, in order to gain experience of working with scientists. For three years, I served as CALeDNA's volunteer software developer as a way of combining my interest in coding, science, and public outreach. I was also given the chance to co-develop a project for CALeDNA about the Los Angeles River. Unfortunately, by the time I ended my involvement with the program, I gave up the idea of pursuing a science career because I felt like I didn't belong in science and my voice didn't matter. That experience has caused lifelong emotional scars.</p>
-<h2 id="public-outreach-informal-education" tabindex="-1">Public outreach, informal education <a class="header-anchor" href="#public-outreach-informal-education">#</a></h2>
-<p>I believe community science project organizers should be trained in science communication and informal education. When I became a volunteer interpretive guide for NHMLA, I was required to undergo training about how to create positive experiences for museum visitors. Communicating science to the general public is different from communicating science to scientists. Teaching informal learners is different from teaching students in a formal classroom setting. Teaching adults is different from teaching kids.</p>
-<p>Unfortunately, those skills aren't emphasized or rewarded in traditional science academia. As a consequence, some science researchers who run community science projects lack the skills or motivations to create positive experiences for their community scientists. I once talked to someone enrolled in a graduate program for citizen science, and they said they don't feel adequately trained in informal education. Even community science practitioners who focus on the educational aspect of community science tend to focus on education in a classroom setting or childhood education. For adult informal learners like myself, it's a total crapshoot on whether the community science program they participate in will nurture or hinder their interest in science.</p>
-<h2 id="data-collection" tabindex="-1">Data collection <a class="header-anchor" href="#data-collection">#</a></h2>
-<p>Most community science programs ask participants to help collect data. I participated in several community science projects, but I got bored. The data collection tasks were very prescriptive - do this, and that, and this. I know many community scientists are perfectly happy with collecting data, but I'm not one of those people. Data collection didn't spark the same degree of curiosity-driven inquiry and experimentation that I experienced while learning paper engineering and coding. Plus, I had no idea what happened to the data I collected. The results were published in paywalled articles that I couldn't access, in jargon-filled language that I couldn't understand.</p>
-<p>Community science programs that aim to broaden participation in science but limits community scientists to only data collecting is like a music teacher trying to get students excited about music but limits them to only playing the scales. Yes, data collection is an important skill, but where are the opportunities for community scientists to use their curiosity, creativity, and problem solving skills? IMO, limiting community scientists to just data collecting deepens the divide between scientists and community scientists because it sends the message that only certain people are allowed to do more. As an informal learner with two STEAM careers, I'm very well aware of what informal learners are capable of if given the chance. In order to create engaging experiences for community scientists, programs should provide a variety of ways for people to participate at every stage of the project.</p>
-<h2 id="equitable-community-science" tabindex="-1">Equitable community science <a class="header-anchor" href="#equitable-community-science">#</a></h2>
-<p>The topic of giving community scientists the opportunity to do more is an ethical issue about the relationship between scientists and local community members. Researchers are relying on the work of community members to help the researchers get funding, publications, and degrees for their students. What are the community members getting in return? IMO, community science projects that focus on the needs of the researchers without creating opportunities that are meaningful to the community members, are engaging in another form of parachute science.</p>
-<p>In order to create an equitable relationship between scientists and local community members, both sides need to benefit from the relationship. The type of benefits that community members are interested in can vary from project to project, and person to person. Some might only want to collect data. Some might want to co-develop a project. Some might want to analyze the data and co-author papers. Some might want translate the project information into their native language. Some might want to make TicTock videos. By moving away from the mentality that defines “real” science in terms of publications, and embracing the different ways that community scientists find meaning in their contributions, we can move closer to creating a science that is open to all.</p>
-<h2 id="environmental-justice-and-dei" tabindex="-1">Environmental justice &amp; DEI <a class="header-anchor" href="#environmental-justice-and-dei">#</a></h2>
-<p>My parents came from low income families in China. When my parents immigrated to the US for better economic opportunities, they didn't speak English, which greatly limited the types of jobs they could get. Because of my parents' limited income, we lived in low income, predominantly Hispanic, inner city neighborhoods that had various environmental issues.</p>
-<p>One trend I've noticed in DEI discussions in community science is that a lot of DEI discussions are centered around environmental justice. I've talked to people involved in environmental justice who are dismissive of community science programs that focus on basic research. I've talked to people involved in basic research who admire the fact that environmental justice programs work with poor or marginalized communities, but do nothing to reach out to those communities themselves.</p>
-<p>I think it is classist and elitist to make the assumption that people from poor or marginalized communities wouldn't be interested in community science programs about basic research. Yes, we need to take care of the basics such as clean water and air so that people can survive. But we also need to give people the chance to thrive. And for some people, being involved in science to better understand the universe we live in is their way to thrive. In an equitable world, people from poor marginalized communities should have as much of a chance to do basic research as people from middle class or wealthy communities.</p>
-<h2 id="closing-thoughts" tabindex="-1">Closing thoughts <a class="header-anchor" href="#closing-thoughts">#</a></h2>
-<p>In order to deal with global problems such as climate change and pandemics, we need more people involved in science. Getting involved in community science is one way people can develop positive feelings about science. However, community science isn't always as open and welcoming as it could be. If the point of community science is to widen who can participate in science, then the effect the program has on the lives of the participants should be one way to measure the success of the program. In order for community science to reach its full potential, practitioners need to create safe welcoming spaces where every community scientist can reach their full potential.</p>
-<h3 id="notes" tabindex="-1">Notes <a class="header-anchor" href="#notes">#</a></h3>
-<p>This post was part of <a href="https://participatorysciences.org/conferences/2024-aaps-conference/2024-caps-poster-discussion-sessions/#equity-diversity-inclusion">2024 Conference for Advancing the Participatory Sciences: Equity, Diversity, and Inclusion</a> Discussion session.</p>
-
-
-
-	<h1 class="post-title"><a href="/blog/2015-05-11-making-is-making/">Paper or pixels, making is making</a></h1>
-
-	<ul class="post-metadata">
-		<li><time datetime="2015-05-11">May 11, 2015</time></li>
-		<li><a href="/tags/life-long-learning/" class="post-tag">life-long learning</a></li>
-	</ul>
-
-	<p>When I tell people that I switched from being a packaging designer to a software engineer, a common response I get is, &quot;Wow, that's a complete career change!&quot; But for me, I see the commonality between paper engineering and software engineering, instead of the differences.</p>
-<p>I've worked at two consultancies in my career: <a href="https://www.structuralgraphics.com">Structural Graphics</a> makes dimensional print advertising, Philosophie makes web apps. While the final product are different, the process is similar. The clients have an idea, and they need our expertise to turn it into reality. Often times the project has a tight budget and an even tighter schedule, which makes making more challenging and sometimes borderline impossible.</p>
-<p>It takes a team of people working together to turn nothing into something: the talkers (sales), the organizers (project managers), the makers (designers and engineers) and most importantly the bill-payers (clients). As a member of the makers, it's rewarding to take the various inputs, use my knowledge and imagination, and output something.</p>
-<p>So whether it's making a box for a product, making a web app for a product, or writing a blog post comparing making a box to making a web app, at the end of the day I get to say, &quot;Hey, I made this,&quot; which is usually a pretty good feeling.</p>
-<h3 id="notes" tabindex="-1">Notes <a class="header-anchor" href="#notes">#</a></h3>
-<p>This post originally was published on Philosophie's blog.</p>
+    <main id="main">
+      
 
 
 
@@ -430,16 +561,448 @@ done: Aug 14</p>
 
 
 
+  <article class="post">
+    <h1 class="post-title" id="adding-pdf-viewer-to-eleventy">
+      <a href="/eleventy-base-blog/blog/2025-06-23-pdfviewer-eleventy/">Adding PDF viewer to Eleventy</a>
+    </h1>
+
+    <ul class="post-metadata">
+      <li>
+        <time datetime="2025-06-24">June 24, 2025</time>
+      </li>
+        <li>
+          <a href="/eleventy-base-blog/tags/coding/" class="post-tag">coding</a>
+        </li>
+    </ul>
+
+    <p>I wanted to add a PDF viewer to Eleventy using <a href="https://mozilla.github.io/pdf.js/">PDF.js</a>.</p>
+<p>At first, I installed PDF.js from npm. However, the npm version only works on Firefox and Chrome. To get a version that works on Safari, I needed to use the legacy build version.</p>
+<p>I cloned PDF.js repo and installed dependencies.</p>
+<pre class="language-bash" tabindex="0"><code class="language-bash"><span class="token function">git</span> clone https://github.com/mozilla/pdf.js.git
+<span class="token builtin class-name">cd</span> pdf.js
+<span class="token function">npm</span> <span class="token function">install</span></code></pre>
+<p>Then I built the legacy version.</p>
+<pre class="language-bash" tabindex="0"><code class="language-bash">npx gulp generic-legacy</code></pre>
+<p>This generated <code>pdf.js</code> and <code>pdf.worker.js</code> in the <code>build/generic-legacy/build/</code> directory. I copied <code>pdf.js</code> and <code>pdf.worker.js</code> to <code>/public/lib/pdfjs/generic-legacy/build</code>.</p>
+<p>Then I put the code to create a viewer in <code>public/lib/pdfviewer.js</code>. The code is based on PDF.js <a href="https://jsfiddle.net/pdfjs/wagvs9Lf/">Prev/Next example</a> and <a href="https://github.com/mozilla/pdf.js/tree/master/examples/mobile-viewer">mobile viewer example</a>.</p>
+<pre class="language-js" tabindex="0"><code class="language-js"><span class="token comment">// set workerSrc property</span>
+pdfjsLib<span class="token punctuation">.</span>GlobalWorkerOptions<span class="token punctuation">.</span>workerSrc <span class="token operator">=</span>
+  <span class="token string">"/lib/pdfjs/generic-legacy/build/pdf.worker.mjs"</span><span class="token punctuation">;</span>
+
+<span class="token keyword">let</span> pdfDoc <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+<span class="token keyword">let</span> pageNum <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+<span class="token keyword">let</span> pageRendering <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+<span class="token keyword">let</span> pageNumPending <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+<span class="token keyword">let</span> scale <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+<span class="token keyword">let</span> canvas <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">"the-canvas"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">let</span> ctx <span class="token operator">=</span> canvas<span class="token punctuation">.</span><span class="token function">getContext</span><span class="token punctuation">(</span><span class="token string">"2d"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> <span class="token constant">DEFAULT_SCALE_DELTA</span> <span class="token operator">=</span> <span class="token number">1.1</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> <span class="token constant">MIN_SCALE</span> <span class="token operator">=</span> <span class="token number">0.25</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> <span class="token constant">MAX_SCALE</span> <span class="token operator">=</span> <span class="token number">10.0</span><span class="token punctuation">;</span>
+
+<span class="token comment">/**
+ * Get page info from document, resize canvas accordingly, and render page.
+ */</span>
+<span class="token keyword">function</span> <span class="token function">renderPage</span><span class="token punctuation">(</span><span class="token parameter">num</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>canvas <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token keyword">return</span><span class="token punctuation">;</span>
+
+  pageRendering <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+  <span class="token comment">// Using promise to fetch the page</span>
+  pdfDoc<span class="token punctuation">.</span><span class="token function">getPage</span><span class="token punctuation">(</span>num<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">page</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> viewport <span class="token operator">=</span> page<span class="token punctuation">.</span><span class="token function">getViewport</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">scale</span><span class="token operator">:</span> scale <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// Support HiDPI-screens.</span>
+    <span class="token keyword">var</span> outputScale <span class="token operator">=</span> window<span class="token punctuation">.</span>devicePixelRatio <span class="token operator">||</span> <span class="token number">1</span><span class="token punctuation">;</span>
+
+    canvas<span class="token punctuation">.</span>width <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">floor</span><span class="token punctuation">(</span>viewport<span class="token punctuation">.</span>width <span class="token operator">*</span> outputScale<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    canvas<span class="token punctuation">.</span>height <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">floor</span><span class="token punctuation">(</span>viewport<span class="token punctuation">.</span>height <span class="token operator">*</span> outputScale<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    canvas<span class="token punctuation">.</span>style<span class="token punctuation">.</span>width <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">floor</span><span class="token punctuation">(</span>viewport<span class="token punctuation">.</span>width<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">"px"</span><span class="token punctuation">;</span>
+    canvas<span class="token punctuation">.</span>style<span class="token punctuation">.</span>height <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">floor</span><span class="token punctuation">(</span>viewport<span class="token punctuation">.</span>height<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">"px"</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">var</span> transform <span class="token operator">=</span>
+      outputScale <span class="token operator">!==</span> <span class="token number">1</span> <span class="token operator">?</span> <span class="token punctuation">[</span>outputScale<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> outputScale<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// Render PDF page into canvas context</span>
+    <span class="token keyword">var</span> renderContext <span class="token operator">=</span> <span class="token punctuation">{</span>
+      <span class="token literal-property property">canvasContext</span><span class="token operator">:</span> ctx<span class="token punctuation">,</span>
+      <span class="token literal-property property">transform</span><span class="token operator">:</span> transform<span class="token punctuation">,</span>
+      <span class="token literal-property property">viewport</span><span class="token operator">:</span> viewport<span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+    <span class="token keyword">var</span> renderTask <span class="token operator">=</span> page<span class="token punctuation">.</span><span class="token function">render</span><span class="token punctuation">(</span>renderContext<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// Wait for rendering to finish</span>
+    renderTask<span class="token punctuation">.</span>promise<span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      pageRendering <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>pageNumPending <span class="token operator">!==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// New page rendering is pending</span>
+        <span class="token function">renderPage</span><span class="token punctuation">(</span>pageNumPending<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        pageNumPending <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token comment">// Update page counters</span>
+  document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">"page_num"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>textContent <span class="token operator">=</span> num<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/**
+ * If another page rendering in progress, waits until the rendering is
+ * finished. Otherwise, executes rendering immediately.
+ */</span>
+<span class="token keyword">function</span> <span class="token function">queueRenderPage</span><span class="token punctuation">(</span><span class="token parameter">num</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>pageRendering<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    pageNumPending <span class="token operator">=</span> num<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+    <span class="token function">renderPage</span><span class="token punctuation">(</span>num<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/**
+ * Displays previous page.
+ */</span>
+<span class="token keyword">function</span> <span class="token function">onPrevPage</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>pageNum <span class="token operator">&lt;=</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  pageNum<span class="token operator">--</span><span class="token punctuation">;</span>
+  <span class="token function">queueRenderPage</span><span class="token punctuation">(</span>pageNum<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/**
+ * Displays next page.
+ */</span>
+<span class="token keyword">function</span> <span class="token function">onNextPage</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>pageNum <span class="token operator">>=</span> pdfDoc<span class="token punctuation">.</span>numPages<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  pageNum<span class="token operator">++</span><span class="token punctuation">;</span>
+  <span class="token function">queueRenderPage</span><span class="token punctuation">(</span>pageNum<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/**
+ * Zoom in
+ */</span>
+<span class="token keyword">function</span> <span class="token function">pdfViewZoomIn</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">let</span> newScale <span class="token operator">=</span> scale<span class="token punctuation">;</span>
+  newScale <span class="token operator">=</span> <span class="token punctuation">(</span>newScale <span class="token operator">*</span> <span class="token constant">DEFAULT_SCALE_DELTA</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toFixed</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  newScale <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">ceil</span><span class="token punctuation">(</span>newScale <span class="token operator">*</span> <span class="token number">10</span><span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">10</span><span class="token punctuation">;</span>
+  newScale <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">min</span><span class="token punctuation">(</span><span class="token constant">MAX_SCALE</span><span class="token punctuation">,</span> newScale<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  scale <span class="token operator">=</span> newScale<span class="token punctuation">;</span>
+
+  <span class="token function">queueRenderPage</span><span class="token punctuation">(</span>pageNum<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/**
+ * Zoom out
+ */</span>
+<span class="token keyword">function</span> <span class="token function">pdfViewZoomOut</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">let</span> newScale <span class="token operator">=</span> scale<span class="token punctuation">;</span>
+  newScale <span class="token operator">=</span> <span class="token punctuation">(</span>newScale <span class="token operator">/</span> <span class="token constant">DEFAULT_SCALE_DELTA</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toFixed</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  newScale <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">floor</span><span class="token punctuation">(</span>newScale <span class="token operator">*</span> <span class="token number">10</span><span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">10</span><span class="token punctuation">;</span>
+  newScale <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">max</span><span class="token punctuation">(</span><span class="token constant">MIN_SCALE</span><span class="token punctuation">,</span> newScale<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  scale <span class="token operator">=</span> newScale<span class="token punctuation">;</span>
+
+  <span class="token function">queueRenderPage</span><span class="token punctuation">(</span>pageNum<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/**
+ * Setup event handlers
+ */</span>
+<span class="token keyword">function</span> <span class="token function">setupEventHandlers</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">let</span> prevEl <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">"prev"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>prevEl<span class="token punctuation">)</span> prevEl<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">"click"</span><span class="token punctuation">,</span> onPrevPage<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">let</span> nextEl <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">"next"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>nextEl<span class="token punctuation">)</span> nextEl<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">"click"</span><span class="token punctuation">,</span> onNextPage<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">let</span> zoomInEl <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">"zoomIn"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>zoomInEl<span class="token punctuation">)</span> zoomInEl<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">"click"</span><span class="token punctuation">,</span> pdfViewZoomIn<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">let</span> zoomOutEl <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">"zoomOut"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>zoomOutEl<span class="token punctuation">)</span> zoomOutEl<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">"click"</span><span class="token punctuation">,</span> pdfViewZoomOut<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">export</span> <span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">init</span><span class="token punctuation">(</span><span class="token parameter">url</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token function">setupEventHandlers</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token comment">// download pdf</span>
+  <span class="token keyword">var</span> loadingTask <span class="token operator">=</span> pdfjsLib<span class="token punctuation">.</span><span class="token function">getDocument</span><span class="token punctuation">(</span>url<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  pdfDoc <span class="token operator">=</span> <span class="token keyword">await</span> loadingTask<span class="token punctuation">.</span>promise<span class="token punctuation">;</span>
+
+  <span class="token comment">// set page count</span>
+  <span class="token keyword">let</span> countEl <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">"page_count"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>countEl<span class="token punctuation">)</span> countEl<span class="token punctuation">.</span>textContent <span class="token operator">=</span> pdfDoc<span class="token punctuation">.</span>numPages<span class="token punctuation">;</span>
+
+  <span class="token comment">// render first page</span>
+  <span class="token function">renderPage</span><span class="token punctuation">(</span>pageNum<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>I added a template file in <code>_includes/pdfviewer.njk</code>. <code>pdfviewer.njk</code> calls the <code>init()</code> from <code>pdfviewer.js</code> with <code>pdfUrl</code> and <code>pdfScale</code> arguments.</p>
+<pre class="language-html" tabindex="0"><code class="language-html">
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span><span class="token punctuation">></span></span><span class="token style"><span class="token language-css">
+  <span class="token punctuation">{</span>% include <span class="token string">"css/pdfviewer.css"</span> %<span class="token punctuation">}</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">></span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>section</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>pdfviewer<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>prev<span class="token punctuation">"</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>button<span class="token punctuation">"</span></span> <span class="token attr-name">title</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>previous page<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Previous<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>next<span class="token punctuation">"</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>button<span class="token punctuation">"</span></span> <span class="token attr-name">title</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>next page<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Next<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>zoomIn<span class="token punctuation">"</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>button<span class="token punctuation">"</span></span> <span class="token attr-name">title</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>zoom in<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>zoomOut<span class="token punctuation">"</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>button<span class="token punctuation">"</span></span> <span class="token attr-name">title</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>zoom out<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span>
+      <span class="token punctuation">></span></span>Page: <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>page_num<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span> / <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>page_count<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span>
+    <span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>canvas</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>the-canvas<span class="token punctuation">"</span></span> <span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value css language-css"><span class="token property">border</span><span class="token punctuation">:</span> 1px solid black<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>canvas</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>section</span><span class="token punctuation">></span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>/lib/pdfjs/generic-legacy/build/pdf.mjs<span class="token punctuation">"</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>module<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>module<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">
+  <span class="token keyword">import</span> <span class="token punctuation">{</span>init<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'/pdfviewer.js'</span>
+  <span class="token function">init</span><span class="token punctuation">(</span><span class="token string">'{{pdfUrl}}'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token punctuation">{</span>pdfScale<span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
+
+</code></pre>
+<p>Then in the file I want to add a pdf, I included <code>pdfviewer.njk</code> and passed in the <code>pdfUrl</code>.</p>
+<pre class="language-js" tabindex="0"><code class="language-js">
+<span class="token punctuation">{</span><span class="token operator">%</span> <span class="token keyword">set</span> pdfUrl <span class="token operator">=</span> <span class="token string">'/pdfs/pcc-portfolio/inat_la_river.pdf'</span> <span class="token operator">%</span><span class="token punctuation">}</span>
+<span class="token punctuation">{</span><span class="token operator">%</span> include <span class="token string">"pdfviewer.njk"</span> <span class="token operator">%</span><span class="token punctuation">}</span>
+</code></pre>
+<p>To adjust the size of the pdf, I passed in <code>pdfScale</code> argument. If it is not set, the value defaults to 1.</p>
+<pre class="language-js" tabindex="0"><code class="language-js">
+<span class="token punctuation">{</span><span class="token operator">%</span> <span class="token keyword">set</span> pdfUrl <span class="token operator">=</span> <span class="token string">'/pdfs/pcc-portfolio/inat_la_river.pdf'</span> <span class="token operator">%</span><span class="token punctuation">}</span>
+<span class="token punctuation">{</span><span class="token operator">%</span> <span class="token keyword">set</span> pdfScale <span class="token operator">=</span> <span class="token string">'.4'</span> <span class="token operator">%</span><span class="token punctuation">}</span>
+<span class="token punctuation">{</span><span class="token operator">%</span> include <span class="token string">"pdfviewer.njk"</span> <span class="token operator">%</span><span class="token punctuation">}</span>
+</code></pre>
+<p>Here's a PDF.</p>
+
+<section class="pdfviewer">
+  <div>
+    <button id="prev" type="button" title="previous page">Previous</button>
+    <span>Page: <span id="page_num"></span> / <span id="page_count"></span></span>
+    <button id="next" type="button" title="next page">Next</button>
+    <button id="zoomIn" type="button" title="zoom in">+</button>
+    <button id="zoomOut" type="button" title="zoom out">–</button>
+  </div>
+<p><canvas id="the-canvas" style="border: 1px solid black;"></canvas></p>
+</section>
+<script src="/eleventy-base-blog/lib/pdfjs/generic-legacy/build/pdf.mjs" type="module"></script>
+
+
+  </article>
+
+  <hr class="separator">
+
+
+  <article class="post">
+    <h1 class="post-title" id="adding-leaflet-maps-to-eleventy">
+      <a href="/eleventy-base-blog/blog/2025-06-22-leaflet-eleventy/">Adding Leaflet maps to Eleventy</a>
+    </h1>
+
+    <ul class="post-metadata">
+      <li>
+        <time datetime="2025-06-22">June 22, 2025</time>
+      </li>
+        <li>
+          <a href="/eleventy-base-blog/tags/coding/" class="post-tag">coding</a>
+        </li>
+    </ul>
+
+    <p>I wanted to find out how to add Leaflet maps to Eleventy, and I came across this post from <a href="https://cloudcannon.com/tutorials/eleventy-beginner-tutorial/eleventy-global-data-files/">Mike Neumegen at cloudcannon</a>. The code is kinda outdated, so I had to update some things.</p>
+<p>First you create in <code>locations.json</code> file in the <code>_data</code> folder. <code>locations.json</code> is an array of locations</p>
+<pre class="language-json" tabindex="0"><code class="language-json"><span class="token punctuation">[</span>
+  <span class="token punctuation">{</span>
+    <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"Kentucky Ridge State Forest"</span><span class="token punctuation">,</span>
+    <span class="token property">"latitude"</span><span class="token operator">:</span> <span class="token string">"36.736700"</span><span class="token punctuation">,</span>
+    <span class="token property">"longitude"</span><span class="token operator">:</span> <span class="token string">"-83.762480"</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">{</span>
+    <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"Amity Park"</span><span class="token punctuation">,</span>
+    <span class="token property">"latitude"</span><span class="token operator">:</span> <span class="token string">"35.932640"</span><span class="token punctuation">,</span>
+    <span class="token property">"longitude"</span><span class="token operator">:</span> <span class="token string">"-82.006000"</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">{</span>
+    <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"Mill Creek Park"</span><span class="token punctuation">,</span>
+    <span class="token property">"latitude"</span><span class="token operator">:</span> <span class="token string">"40.030819"</span><span class="token punctuation">,</span>
+    <span class="token property">"longitude"</span><span class="token operator">:</span> <span class="token string">"-122.115387"</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">{</span>
+    <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"Willamette National Forest"</span><span class="token punctuation">,</span>
+    <span class="token property">"latitude"</span><span class="token operator">:</span> <span class="token string">"44.058990"</span><span class="token punctuation">,</span>
+    <span class="token property">"longitude"</span><span class="token operator">:</span> <span class="token string">"-122.484970"</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">{</span>
+    <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"The Mound"</span><span class="token punctuation">,</span>
+    <span class="token property">"latitude"</span><span class="token operator">:</span> <span class="token string">"32.490819"</span><span class="token punctuation">,</span>
+    <span class="token property">"longitude"</span><span class="token operator">:</span> <span class="token string">"-80.320408"</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">]</span></code></pre>
+<p>Then you add a file called <code>map.njk</code> in the <code>_includes</code> folder. <code>map.njk</code> has CDN links for Leaflet, html markup for the map, and the javacript code to create a Leaflet map.</p>
+<pre class="language-html" tabindex="0"><code class="language-html">
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span>
+  <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>stylesheet<span class="token punctuation">"</span></span>
+  <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://unpkg.com/leaflet@1.9.4/dist/leaflet.css<span class="token punctuation">"</span></span>
+  <span class="token attr-name">integrity</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=<span class="token punctuation">"</span></span>
+  <span class="token attr-name">crossorigin</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token punctuation">"</span></span>
+<span class="token punctuation">/></span></span>
+<span class="token comment">&lt;!-- Make sure you put this AFTER Leaflet's CSS --></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span>
+  <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://unpkg.com/leaflet@1.9.4/dist/leaflet.js<span class="token punctuation">"</span></span>
+  <span class="token attr-name">integrity</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=<span class="token punctuation">"</span></span>
+  <span class="token attr-name">crossorigin</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token punctuation">"</span></span>
+<span class="token punctuation">></span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>map<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span><span class="token punctuation">></span></span><span class="token style"><span class="token language-css">
+  <span class="token selector">#map</span> <span class="token punctuation">{</span>
+    <span class="token property">height</span><span class="token punctuation">:</span> 300px<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">></span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">
+  <span class="token comment">// https://mozilla.github.io/nunjucks/templating.html#builtin-filters</span>
+  <span class="token comment">// https://github.com/11ty/eleventy/issues/1158</span>
+
+  <span class="token comment">// dump(2) will JSON.stringify markers object with 2 spaces.</span>
+  <span class="token comment">// safe will ensure that the data is not escaped.</span>
+  <span class="token keyword">let</span> markers <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">{</span> markers <span class="token operator">|</span> <span class="token function">dump</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span> <span class="token operator">|</span> safe <span class="token punctuation">}</span><span class="token punctuation">}</span>
+
+  <span class="token comment">// create map</span>
+  <span class="token keyword">const</span> map <span class="token operator">=</span> <span class="token constant">L</span><span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token string">'map'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token constant">L</span><span class="token punctuation">.</span><span class="token function">tileLayer</span><span class="token punctuation">(</span><span class="token string">'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'</span><span class="token punctuation">,</span>
+      <span class="token punctuation">{</span><span class="token literal-property property">attribution</span><span class="token operator">:</span> <span class="token string">'&amp;copy; &lt;a href="https://www.openstreetmap.org/copyright">OpenStreetMap&lt;/a> contributors'</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+      <span class="token punctuation">.</span><span class="token function">addTo</span><span class="token punctuation">(</span>map<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token comment">// add location markers to map</span>
+  <span class="token keyword">let</span> bounds <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> markers<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span> <span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">const</span> marker <span class="token operator">=</span> <span class="token constant">L</span><span class="token punctuation">.</span><span class="token function">marker</span><span class="token punctuation">(</span><span class="token punctuation">[</span>markers<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>latitude<span class="token punctuation">,</span> markers<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>longitude<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">addTo</span><span class="token punctuation">(</span>map<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      marker<span class="token punctuation">.</span><span class="token function">bindPopup</span><span class="token punctuation">(</span>markers<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      bounds<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token punctuation">[</span>markers<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>latitude<span class="token punctuation">,</span> markers<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>longitude<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">// adjust the map to show all location markers</span>
+  map<span class="token punctuation">.</span><span class="token function">fitBounds</span><span class="token punctuation">(</span>bounds<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
+</code></pre>
+<p>Then in the file you want to add the map, include <code>map.njk</code> and pass in the markers data and the height of the map.</p>
+<pre class="language-js" tabindex="0"><code class="language-js">
+<span class="token punctuation">{</span><span class="token operator">%</span> <span class="token keyword">set</span> markers <span class="token operator">=</span> locations <span class="token operator">%</span><span class="token punctuation">}</span>
+<span class="token punctuation">{</span><span class="token operator">%</span> <span class="token keyword">set</span> mapHeight <span class="token operator">=</span> <span class="token string">'400px'</span> <span class="token operator">%</span><span class="token punctuation">}</span>
+<span class="token punctuation">{</span><span class="token operator">%</span> include <span class="token string">"map.njk"</span> <span class="token operator">%</span><span class="token punctuation">}</span>
+</code></pre>
+<p>Here's the map with markers.</p>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+<!-- Make sure you put this AFTER Leaflet's CSS -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<div id="map"></div>
+
+
+
+  </article>
+
+  <hr class="separator">
+
+
+  <article class="post">
+    <h1 class="post-title" id="communicating-information-arcgis-dashboard-vs-arcgis-storymap">
+      <a href="/eleventy-base-blog/blog/2025-06-20-dashboard-storymap/">Communicating Information - ArcGIS Dashboard vs ArcGIS StoryMap</a>
+    </h1>
+
+    <ul class="post-metadata">
+      <li>
+        <time datetime="2025-06-20">June 20, 2025</time>
+      </li>
+        <li>
+          <a href="/eleventy-base-blog/tags/gis/" class="post-tag">GIS</a>, 
+        </li>
+        <li>
+          <a href="/eleventy-base-blog/tags/pcc/" class="post-tag">PCC</a>
+        </li>
+    </ul>
+
+    <p>For the final project of the Pasadena City College GEOG 115 Environmental Analysis with GIS class, students had the choice of creating a ArcGIS Dashboard or creating a ArcGIS StoryMap. Two students including myself choose to do dashboards, 18 students choose to do StoryMaps.</p>
+<p>GIS is a technical subject. People are dealing with creating maps and charts to analyze an visualize geospatial data. Yet only two people were interested in creating dashboards to display that data. The rest wanted to tell a story with prose, images, and videos.</p>
+<p>If storytelling is the preferred method of communicating for these geography students, then why do so many people in academic science research community deemphasized and discouraged
+science communication to the general public?</p>
+
+  </article>
+
+  <hr class="separator">
+
+
+  <article class="post">
+    <h1 class="post-title" id="day-at-ucla-botany-gardens">
+      <a href="/eleventy-base-blog/blog/2025-06-07-ucla-gardens/">Day at UCLA Botany Gardens</a>
+    </h1>
+
+    <ul class="post-metadata">
+      <li>
+        <time datetime="2025-06-07">June 07, 2025</time>
+      </li>
+        <li>
+          <a href="/eleventy-base-blog/tags/plants/" class="post-tag">plants</a>, 
+        </li>
+        <li>
+          <a href="/eleventy-base-blog/tags/life-long-learning/" class="post-tag">life-long learning</a>, 
+        </li>
+        <li>
+          <a href="/eleventy-base-blog/tags/sketching/" class="post-tag">sketching</a>
+        </li>
+    </ul>
+
+    <p>I spent the day at UCLA Mathias Botanical Garden. I went on a guided tour of the garden, attended a plant propagation class, and attended a drawing plants class. I also got unexpectedly got a chance to hang out with some friends, one of whom works at the gardens.</p>
+<p>During the drawing class, one of the attendees asked for some tips about how to get started. She and her boyfriend had no experience drawing. I would rate my drawing skills as above stick figure level, but nowhere good enough do it as a career. I gave her some tips, and she commended me on my advice. Turns out she's a teacher so she noticed I focused on growth mindset and positive reinforcement, which is crucial to creating a good learning environment.</p>
+<p>My friend who works at the Natural History Museum of Los Angeles County told me that some of the high schools students who attended the R coding workshop earlier this year actually used some of what they learned in their school presentation.</p>
+<p>It was nice getting positive feedback about my teaching attempts. Yeah, I'm a better at informal education than I am at sketching or identifying plants and animals, and that's totally cool with me.</p>
+
+  </article>
+
+  <hr class="separator">
+
+
+  <article class="post">
+    <h1 class="post-title" id="my-first-python-class">
+      <a href="/eleventy-base-blog/blog/2025-03-16-python-class/">My First Python class</a>
+    </h1>
+
+    <ul class="post-metadata">
+      <li>
+        <time datetime="2025-03-16">March 16, 2025</time>
+      </li>
+        <li>
+          <a href="/eleventy-base-blog/tags/gis/" class="post-tag">GIS</a>, 
+        </li>
+        <li>
+          <a href="/eleventy-base-blog/tags/pcc/" class="post-tag">PCC</a>
+        </li>
+    </ul>
+
+    <p>As part of Pasadena City College's <a href="https://pasadena.edu/academics/divisions/natural-sciences/areas-of-study/gis.php">Geographic Information Systems and Technology certificate</a> program, I'm enrolled in CIS 012 Introduction to Programming
+Using Python. This is the first time I've taken a programming class in college. Previously, I learned programming through reading books, watching videos, and doing projects.</p>
+<p>Hardest part of the class is the professor lowers the grade on homework assignments if students uses code not covered in the class. I have to carefully review the lecture material so I don't accidentally use code that wasn't covered in the class. In other words, I have to do what the professor taught instead of doing what I know would work.</p>
+
+  </article>
+
+  <hr class="separator">
+
+
+
+
+
+  <p>4 more posts can be found in <a href="/eleventy-base-blog/blog/">the archive</a>.</p>
 
 
 
 
 
 
-		</main>
+    </main>
 
-		<footer></footer>
+    <footer></footer>
 
-		<!-- This page `/` was built on 2025-06-20T05:34:10.901Z -->
-	</body>
+    <!-- This page `/` was built on 2025-06-28T04:51:12.244Z -->
+    <script type="module" src="/eleventy-base-blog/dist/3q_kko4FYy.js"></script>
+  </body>
 </html>

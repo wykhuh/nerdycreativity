@@ -1,14 +1,345 @@
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Paper or pixels, making is making</title>
-		<meta name="description" content="Website for me, a nerd who likes to create things.">
-		<link rel="alternate" href="/feed/feed.xml" type="application/atom+xml" title="Nerdy Creativity">
-		<link rel="alternate" href="/feed/feed.json" type="application/json" title="Nerdy Creativity">
-		
-		<style>/**
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper or pixels, making is making</title>
+    <meta name="description" content="Website for me, a nerd who likes to create things.">
+    <link rel="alternate" href="/eleventy-base-blog/feed/feed.xml" type="application/atom+xml" title="Nerdy Creativity">
+    
+    
+    
+    <style>
+      /* This is an arbitrary CSS string added to the bundle */
+/* Defaults */
+:root {
+  --font-family: -apple-system, system-ui, sans-serif;
+  --font-family-monospace: Consolas, Menlo, Monaco, Andale Mono WT, Andale Mono,
+    Lucida Console, Lucida Sans Typewriter, DejaVu Sans Mono,
+    Bitstream Vera Sans Mono, Liberation Mono, Nimbus Mono L, Courier New,
+    Courier, monospace;
+}
+
+/* Theme colors */
+:root {
+  --color-gray-10: #f0f0f0;
+  --color-gray-20: #e0e0e0;
+  --color-gray-50: #c0c0c0;
+  --color-gray-90: #333333;
+
+  --background-color: #fff;
+
+  --text-color: var(--color-gray-90);
+  --text-color-link: #dda15e;
+  --text-color-link-active: #bc6c25;
+  --text-color-link-visited: #758543;
+
+  --syntax-tab-size: 2;
+  --primary: #ccd5ae;
+}
+
+/* https://coolors.co/palette/606c38-283618-fefae0-dda15e-bc6c25
+["#606c38","#283618","#fefae0","#dda15e","#bc6c25"] */
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-gray-10: #f0f0f0;
+    --color-gray-20: #e0e0e0;
+    --color-gray-50: #c0c0c0;
+    --color-gray-90: #dad8d8;
+
+    /* --text-color is assigned to --color-gray-_ above */
+    --text-color-link: #1493fb;
+    --text-color-link-active: #6969f7;
+    --text-color-link-visited: #a6a6f8;
+
+    --background-color: #15202b;
+  }
+}
+
+/* Global stylesheet */
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0 auto;
+  font-family: var(--font-family);
+  color: var(--text-color);
+  background-color: var(--background-color);
+}
+html {
+  overflow-y: scroll;
+}
+
+/* https://www.a11yproject.com/posts/how-to-hide-content/ */
+.visually-hidden {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+p {
+  line-height: 1.5;
+}
+
+li {
+  line-height: 1.5;
+}
+
+a[href] {
+  color: var(--text-color-link);
+}
+a[href]:visited {
+  color: var(--text-color-link-visited);
+}
+a[href]:hover,
+a[href]:active {
+  color: var(--text-color-link-active);
+}
+
+main {
+  padding: 1rem;
+}
+main :first-child {
+  margin-top: 0;
+}
+
+.links-nextprev {
+  list-style: none;
+  border-top: 1px dashed var(--color-gray-20);
+  padding: 1em 0;
+}
+
+table {
+  margin: 1em 0;
+}
+table td,
+table th {
+  padding-right: 1em;
+}
+
+pre,
+code {
+  font-family: var(--font-family-monospace);
+}
+pre:not([class*="language-"]) {
+  margin: 0.5em 0;
+  line-height: 1.375; /* 22px /16 */
+  -moz-tab-size: var(--syntax-tab-size);
+  -o-tab-size: var(--syntax-tab-size);
+  tab-size: var(--syntax-tab-size);
+  -webkit-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+  direction: ltr;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+}
+code {
+  word-break: break-all;
+  padding: 0.1rem 0.3rem;
+  background-color: var(--color-gray-10);
+  border-radius: 6px;
+}
+
+/* ===============================
+layout
+=============================== */
+
+main,
+header {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+/* ===============================
+header
+=============================== */
+
+header {
+  box-shadow: 0px 1px 5px var(--color-gray-50);
+}
+
+header {
+  display: flex;
+  gap: 1em 0.5em;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 1em;
+}
+.home-link {
+  font-size: 1em; /* 16px /16 */
+  font-weight: 700;
+  margin-right: 2em;
+}
+.home-link:link:not(:hover) {
+  text-decoration: none;
+}
+
+/* ===============================
+Markdown header links
+=============================== */
+
+.header-anchor {
+  text-decoration: none;
+  font-style: normal;
+  font-size: 1em;
+  margin-left: 0.1em;
+}
+a[href].header-anchor,
+a[href].header-anchor:visited {
+  color: transparent;
+}
+a[href].header-anchor:focus,
+a[href].header-anchor:hover {
+  text-decoration: underline;
+}
+a[href].header-anchor:focus,
+:hover > a[href].header-anchor {
+  color: #aaa;
+}
+
+h2 + .header-anchor {
+  font-size: 1.5em;
+}
+
+/* ===============================
+nav
+=============================== */
+
+.nav {
+  display: flex;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.nav-item {
+  display: inline-block;
+  margin-right: 1em;
+}
+.nav-item a[href]:not(:hover) {
+  text-decoration: none;
+}
+.nav a[href][aria-current="page"] {
+  text-decoration: underline;
+}
+
+.nav-item a[href] {
+  color: var(--text-color-link-visited);
+}
+
+/* ===============================
+ posts lists
+=============================== */
+
+.postlist {
+  padding: 0;
+}
+.postlist-item {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  margin-bottom: 1em;
+}
+
+.postlist-date,
+.postlist-item:before {
+  font-size: 0.8125em; /* 13px /16 */
+  color: var(--color-gray-90);
+}
+.postlist-date {
+  word-spacing: -0.5px;
+}
+.postlist-link {
+  font-size: 1.1875em; /* 19px /16 */
+  font-weight: 700;
+  flex-basis: calc(100% - 1.5rem);
+  padding-left: 0.25em;
+  padding-right: 0.5em;
+  text-underline-position: from-font;
+  text-underline-offset: 0;
+  text-decoration-thickness: 1px;
+}
+.postlist-item-active .postlist-link {
+  font-weight: bold;
+}
+
+/* ===============================
+ posts tags
+=============================== */
+
+.post-tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: capitalize;
+  font-style: italic;
+}
+.postlist-item > .post-tag {
+  align-self: center;
+}
+
+/* ===============================
+ posts
+=============================== */
+
+.post {
+  /* margin:2rem 0; */
+  padding: 2rem 0;
+  /* background-color: #a6a6f8; */
+  /* border-top: 1px dashed var(--color-gray-50); */
+}
+
+.separator {
+  border: none;
+  height: 1px;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent,
+    transparent 5px,
+    var(--color-gray-50) 5px,
+    var(--color-gray-50) 10px
+  );
+}
+
+h1.post-title a {
+  text-decoration: none;
+  color: var(--text-color);
+}
+
+h1.post-title a:visited {
+  color: var(--text-color);
+}
+
+h1.post-title a:active,
+h1.post-title a:hover {
+  text-decoration: underline;
+}
+
+.post-metadata {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 0.5em;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.post-metadata time {
+  margin-right: 1em;
+}
+/**
  * okaidia theme for JavaScript, CSS and HTML
  * Loosely based on Monokai textmate theme by http://www.monokai.nl/
  * @author ocodia
@@ -136,372 +467,107 @@ pre[class*="language-"] {
  */
 
 pre[class*="language-diff-"] {
-	--eleventy-code-padding: 1.25em;
-	padding-left: var(--eleventy-code-padding);
-	padding-right: var(--eleventy-code-padding);
+  --eleventy-code-padding: 1.25em;
+  padding-left: var(--eleventy-code-padding);
+  padding-right: var(--eleventy-code-padding);
 }
 .token.deleted {
-	background-color: hsl(0, 51%, 37%);
-	color: inherit;
+  background-color: hsl(0, 51%, 37%);
+  color: inherit;
 }
 .token.inserted {
-	background-color: hsl(126, 31%, 39%);
-	color: inherit;
+  background-color: hsl(126, 31%, 39%);
+  color: inherit;
 }
 
 /* Make the + and - characters unselectable for copy/paste */
 .token.prefix.unchanged,
 .token.prefix.inserted,
 .token.prefix.deleted {
-	-webkit-user-select: none;
-	user-select: none;
-	display: inline-flex;
-	align-items: center;
-	justify-content: center;
-	padding-top: 2px;
-	padding-bottom: 2px;
+  -webkit-user-select: none;
+  user-select: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 2px;
+  padding-bottom: 2px;
 }
 .token.prefix.inserted,
 .token.prefix.deleted {
-	width: var(--eleventy-code-padding);
-	background-color: rgba(0,0,0,.2);
+  width: var(--eleventy-code-padding);
+  background-color: rgba(0, 0, 0, 0.2);
 }
 
 /* Optional: full-width background color */
 .token.inserted:not(.prefix),
 .token.deleted:not(.prefix) {
-	display: block;
-	margin-left: calc(-1 * var(--eleventy-code-padding));
-	margin-right: calc(-1 * var(--eleventy-code-padding));
-	text-decoration: none; /* override del, ins, mark defaults */
-	color: inherit; /* override del, ins, mark defaults */
+  display: block;
+  margin-left: calc(-1 * var(--eleventy-code-padding));
+  margin-right: calc(-1 * var(--eleventy-code-padding));
+  text-decoration: none; /* override del, ins, mark defaults */
+  color: inherit; /* override del, ins, mark defaults */
 }
-* { box-sizing: border-box; }
-/* Defaults */
-:root {
-	--font-family: -apple-system, system-ui, sans-serif;
-	--font-family-monospace: Consolas, Menlo, Monaco, Andale Mono WT, Andale Mono,
-		Lucida Console, Lucida Sans Typewriter, DejaVu Sans Mono,
-		Bitstream Vera Sans Mono, Liberation Mono, Nimbus Mono L, Courier New,
-		Courier, monospace;
-}
+    </style>
+  </head>
+  <body>
+    <a href="#main" id="skip-link" class="visually-hidden">Skip to main content</a>
 
-/* Theme colors */
-:root {
-	--color-gray-20: #e0e0e0;
-	--color-gray-50: #c0c0c0;
-	--color-gray-90: #333;
+    <header>
+      <a href="/eleventy-base-blog/" class="home-link">Nerdy Creativity</a>
+      <nav>
+        <h2 class="visually-hidden" id="top-level-navigation-menu">Top level navigation menu</h2>
+        <ul class="nav">
+            <li class="nav-item">
+              <a href="/eleventy-base-blog/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a href="/eleventy-base-blog/blog/">Archive</a>
+            </li>
+            <li class="nav-item">
+              <a href="/eleventy-base-blog/about/">About Me</a>
+            </li>
+            <li class="nav-item">
+              <a href="/eleventy-base-blog/projects/">Projects</a>
+            </li>
+        </ul>
+      </nav>
+    </header>
 
-	--background-color: #fff;
+    <main id="main">
+      
 
-	--text-color: var(--color-gray-90);
-	--text-color-link: #082840;
-	--text-color-link-active: #5f2b48;
-	--text-color-link-visited: #17050f;
 
-	--syntax-tab-size: 2;
-}
 
-@media (prefers-color-scheme: dark) {
-	:root {
-		--color-gray-20: #e0e0e0;
-		--color-gray-50: #c0c0c0;
-		--color-gray-90: #dad8d8;
-
-		/* --text-color is assigned to --color-gray-_ above */
-		--text-color-link: #1493fb;
-		--text-color-link-active: #6969f7;
-		--text-color-link-visited: #a6a6f8;
-
-		--background-color: #15202b;
-	}
-}
-
-/* Global stylesheet */
-* {
-	box-sizing: border-box;
-}
-
-html,
-body {
-	padding: 0;
-	margin: 0 auto;
-	font-family: var(--font-family);
-	color: var(--text-color);
-	background-color: var(--background-color);
-}
-html {
-	overflow-y: scroll;
-}
-body {
-	max-width: 40em;
-}
-
-/* https://www.a11yproject.com/posts/how-to-hide-content/ */
-.visually-hidden {
-	clip: rect(0 0 0 0);
-	clip-path: inset(50%);
-	height: 1px;
-	overflow: hidden;
-	position: absolute;
-	white-space: nowrap;
-	width: 1px;
-}
-
-p:last-child {
-	margin-bottom: 0;
-}
-p {
-	line-height: 1.5;
-}
-
-li {
-	line-height: 1.5;
-}
-
-a[href] {
-	color: var(--text-color-link);
-}
-a[href]:visited {
-	color: var(--text-color-link-visited);
-}
-a[href]:hover,
-a[href]:active {
-	color: var(--text-color-link-active);
-}
-
-main {
-	padding: 1rem;
-}
-main :first-child {
-	margin-top: 0;
-}
-
-header {
-	border-bottom: 1px dashed var(--color-gray-20);
-}
-header:after {
-	content: "";
-	display: table;
-	clear: both;
-}
-
-.links-nextprev {
-	list-style: none;
-	border-top: 1px dashed var(--color-gray-20);
-	padding: 1em 0;
-}
-
-table {
-	margin: 1em 0;
-}
-table td,
-table th {
-	padding-right: 1em;
-}
-
-pre,
-code {
-	font-family: var(--font-family-monospace);
-}
-pre:not([class*="language-"]) {
-	margin: 0.5em 0;
-	line-height: 1.375; /* 22px /16 */
-	-moz-tab-size: var(--syntax-tab-size);
-	-o-tab-size: var(--syntax-tab-size);
-	tab-size: var(--syntax-tab-size);
-	-webkit-hyphens: none;
-	-ms-hyphens: none;
-	hyphens: none;
-	direction: ltr;
-	text-align: left;
-	white-space: pre;
-	word-spacing: normal;
-	word-break: normal;
-}
-code {
-	word-break: break-all;
-}
-
-/* Header */
-header {
-	display: flex;
-	gap: 1em 0.5em;
-	flex-wrap: wrap;
-	align-items: center;
-	padding: 1em;
-}
-.home-link {
-	font-size: 1em; /* 16px /16 */
-	font-weight: 700;
-	margin-right: 2em;
-}
-.home-link:link:not(:hover) {
-	text-decoration: none;
-}
-
-/* Nav */
-.nav {
-	display: flex;
-	padding: 0;
-	margin: 0;
-	list-style: none;
-}
-.nav-item {
-	display: inline-block;
-	margin-right: 1em;
-}
-.nav-item a[href]:not(:hover) {
-	text-decoration: none;
-}
-.nav a[href][aria-current="page"] {
-	text-decoration: underline;
-}
-
-/* Posts list */
-.postlist {
-	list-style: none;
-	padding: 0;
-	padding-left: 1.5rem;
-}
-.postlist-item {
-	display: flex;
-	flex-wrap: wrap;
-	align-items: baseline;
-	counter-increment: start-from -1;
-	margin-bottom: 1em;
-}
-.postlist-item:before {
-	display: inline-block;
-	pointer-events: none;
-	content: "" counter(start-from, decimal-leading-zero) ". ";
-	line-height: 100%;
-	text-align: right;
-	margin-left: -1.5rem;
-}
-.postlist-date,
-.postlist-item:before {
-	font-size: 0.8125em; /* 13px /16 */
-	color: var(--color-gray-90);
-}
-.postlist-date {
-	word-spacing: -0.5px;
-}
-.postlist-link {
-	font-size: 1.1875em; /* 19px /16 */
-	font-weight: 700;
-	flex-basis: calc(100% - 1.5rem);
-	padding-left: 0.25em;
-	padding-right: 0.5em;
-	text-underline-position: from-font;
-	text-underline-offset: 0;
-	text-decoration-thickness: 1px;
-}
-.postlist-item-active .postlist-link {
-	font-weight: bold;
-}
-
-/* Tags */
-.post-tag {
-	display: inline-flex;
-	align-items: center;
-	justify-content: center;
-	text-transform: capitalize;
-	font-style: italic;
-}
-.postlist-item > .post-tag {
-	align-self: center;
-}
-
-.post-title:first-of-type {
-	border-top: 0;
-	padding-top: 0;
-}
-
-.post-title {
-	border-top: 1px dashed var(--color-gray-20);
-	padding-top: 1rem;
-}
-
-.post-title a {
-	text-decoration: none;
-}
-
-/* Tags list */
-.post-metadata {
-	display: inline-flex;
-	flex-wrap: wrap;
-	gap: 0.5em;
-	list-style: none;
-	padding: 0;
-	margin: 0;
-}
-.post-metadata time {
-	margin-right: 1em;
-}
-
-/* Direct Links / Markdown Headers */
-.header-anchor {
-	text-decoration: none;
-	font-style: normal;
-	font-size: 1em;
-	margin-left: 0.1em;
-}
-a[href].header-anchor,
-a[href].header-anchor:visited {
-	color: transparent;
-}
-a[href].header-anchor:focus,
-a[href].header-anchor:hover {
-	text-decoration: underline;
-}
-a[href].header-anchor:focus,
-:hover > a[href].header-anchor {
-	color: #aaa;
-}
-
-h2 + .header-anchor {
-	font-size: 1.5em;
-}</style>
-	</head>
-	<body>
-		<a href="#skip" class="visually-hidden">Skip to main content</a>
-
-		<header>
-			<a href="/" class="home-link">Nerdy Creativity</a>
-			<nav>
-				<h2 class="visually-hidden">Top level navigation menu</h2>
-				<ul class="nav">
-					<li class="nav-item"><a href="/">Home</a></li>
-					<li class="nav-item"><a href="/blog/">Archive</a></li>
-					<li class="nav-item"><a href="/about/">About Me</a></li>
-				</ul>
-			</nav>
-		</header>
-
-		<main id="skip">
-			
-<h1>Paper or pixels, making is making</h1>
+<h1 id="paper-or-pixels-making-is-making">Paper or pixels, making is making</h1>
 
 <ul class="post-metadata">
-	<li><time datetime="2015-05-11">May 11, 2015</time></li>
-	<li><a href="/tags/life-long-learning/" class="post-tag">life-long learning</a></li>
+  <li>
+    <time datetime="2015-05-11">May 11, 2015</time>
+  </li>
+    <li>
+      <a href="/eleventy-base-blog/tags/life-long-learning/" class="post-tag">life-long learning</a>
+    </li>
 </ul>
 
 <p>When I tell people that I switched from being a packaging designer to a software engineer, a common response I get is, &quot;Wow, that's a complete career change!&quot; But for me, I see the commonality between paper engineering and software engineering, instead of the differences.</p>
 <p>I've worked at two consultancies in my career: <a href="https://www.structuralgraphics.com">Structural Graphics</a> makes dimensional print advertising, Philosophie makes web apps. While the final product are different, the process is similar. The clients have an idea, and they need our expertise to turn it into reality. Often times the project has a tight budget and an even tighter schedule, which makes making more challenging and sometimes borderline impossible.</p>
 <p>It takes a team of people working together to turn nothing into something: the talkers (sales), the organizers (project managers), the makers (designers and engineers) and most importantly the bill-payers (clients). As a member of the makers, it's rewarding to take the various inputs, use my knowledge and imagination, and output something.</p>
 <p>So whether it's making a box for a product, making a web app for a product, or writing a blog post comparing making a box to making a web app, at the end of the day I get to say, &quot;Hey, I made this,&quot; which is usually a pretty good feeling.</p>
-<h3 id="notes" tabindex="-1">Notes <a class="header-anchor" href="#notes">#</a></h3>
+<h3 id="notes">Notes</h3>
 <p>This post originally was published on Philosophie's blog.</p>
 
-<ul class="links-nextprev"><li>Next: <a href="/blog/2024-06-06-community-science-issues/">Issues in Community Science - from a community scientist POV</a></li>
-</ul>
+    <ul class="links-nextprev">
+        <li class="links-nextprev-next">
+          Next: <a href="/eleventy-base-blog/blog/2024-06-06-community-science-issues/">Issues in Community Science - from a community scientist POV</a>
+        </li>
+      
+    </ul>
 
-		</main>
+    </main>
 
-		<footer></footer>
+    <footer></footer>
 
-		<!-- This page `/blog/2015-05-11-making-is-making/` was built on 2025-06-20T05:34:10.900Z -->
-	</body>
+    <!-- This page `/blog/2015-05-11-making-is-making/` was built on 2025-06-28T04:51:12.245Z -->
+    <script type="module" src="/eleventy-base-blog"></script>
+  </body>
 </html>
