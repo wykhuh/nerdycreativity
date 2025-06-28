@@ -204,12 +204,12 @@ pdfjsLib&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;GlobalWork
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Then in the file I want to add a pdf, I included &lt;code&gt;pdfviewer.njk&lt;/code&gt; and passed in the &lt;code&gt;pdfUrl&lt;/code&gt;.&lt;/p&gt;
 &lt;pre class=&quot;language-js&quot; tabindex=&quot;0&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;
-&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;set&lt;/span&gt; pdfUrl &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&#39;/pdfs/pcc-portfolio/inat_la_river.pdf&#39;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;set&lt;/span&gt; pdfUrl &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&#39;/assets/pdfs/pcc-portfolio/inat_la_river.pdf&#39;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
 &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;%&lt;/span&gt; include &lt;span class=&quot;token string&quot;&gt;&quot;pdfviewer.njk&quot;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;To adjust the size of the pdf, I passed in &lt;code&gt;pdfScale&lt;/code&gt; argument. If it is not set, the value defaults to 1.&lt;/p&gt;
 &lt;pre class=&quot;language-js&quot; tabindex=&quot;0&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;
-&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;set&lt;/span&gt; pdfUrl &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&#39;/pdfs/pcc-portfolio/inat_la_river.pdf&#39;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;set&lt;/span&gt; pdfUrl &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&#39;/assets/pdfs/pcc-portfolio/inat_la_river.pdf&#39;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
 &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;set&lt;/span&gt; pdfScale &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&#39;.4&#39;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
 &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;%&lt;/span&gt; include &lt;span class=&quot;token string&quot;&gt;&quot;pdfviewer.njk&quot;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;
@@ -225,7 +225,8 @@ pdfjsLib&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;GlobalWork
   &lt;/div&gt;
 &lt;p&gt;&lt;canvas id=&quot;the-canvas&quot; style=&quot;border: 1px solid black;&quot;&gt;&lt;/canvas&gt;&lt;/p&gt;
 &lt;/section&gt;
-&lt;script src=&quot;https://example.com/nerdycreativity/lib/pdfjs/generic-legacy/build/pdf.mjs&quot; type=&quot;module&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;https://example.com/nerdycreativity/assets/lib/pdfjs/generic-legacy/build/pdf.mjs&quot; type=&quot;module&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;https://example.com/nerdycreativity/assets/scripts/pdfviewer.js&quot; type=&quot;module&quot;&gt;&lt;/script&gt;
 
 </content>
   </entry>

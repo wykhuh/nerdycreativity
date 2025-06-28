@@ -754,12 +754,12 @@ pdfjsLib<span class="token punctuation">.</span>GlobalWorkerOptions<span class="
 </code></pre>
 <p>Then in the file I want to add a pdf, I included <code>pdfviewer.njk</code> and passed in the <code>pdfUrl</code>.</p>
 <pre class="language-js" tabindex="0"><code class="language-js">
-<span class="token punctuation">{</span><span class="token operator">%</span> <span class="token keyword">set</span> pdfUrl <span class="token operator">=</span> <span class="token string">'/pdfs/pcc-portfolio/inat_la_river.pdf'</span> <span class="token operator">%</span><span class="token punctuation">}</span>
+<span class="token punctuation">{</span><span class="token operator">%</span> <span class="token keyword">set</span> pdfUrl <span class="token operator">=</span> <span class="token string">'/assets/pdfs/pcc-portfolio/inat_la_river.pdf'</span> <span class="token operator">%</span><span class="token punctuation">}</span>
 <span class="token punctuation">{</span><span class="token operator">%</span> include <span class="token string">"pdfviewer.njk"</span> <span class="token operator">%</span><span class="token punctuation">}</span>
 </code></pre>
 <p>To adjust the size of the pdf, I passed in <code>pdfScale</code> argument. If it is not set, the value defaults to 1.</p>
 <pre class="language-js" tabindex="0"><code class="language-js">
-<span class="token punctuation">{</span><span class="token operator">%</span> <span class="token keyword">set</span> pdfUrl <span class="token operator">=</span> <span class="token string">'/pdfs/pcc-portfolio/inat_la_river.pdf'</span> <span class="token operator">%</span><span class="token punctuation">}</span>
+<span class="token punctuation">{</span><span class="token operator">%</span> <span class="token keyword">set</span> pdfUrl <span class="token operator">=</span> <span class="token string">'/assets/pdfs/pcc-portfolio/inat_la_river.pdf'</span> <span class="token operator">%</span><span class="token punctuation">}</span>
 <span class="token punctuation">{</span><span class="token operator">%</span> <span class="token keyword">set</span> pdfScale <span class="token operator">=</span> <span class="token string">'.4'</span> <span class="token operator">%</span><span class="token punctuation">}</span>
 <span class="token punctuation">{</span><span class="token operator">%</span> include <span class="token string">"pdfviewer.njk"</span> <span class="token operator">%</span><span class="token punctuation">}</span>
 </code></pre>
@@ -775,7 +775,8 @@ pdfjsLib<span class="token punctuation">.</span>GlobalWorkerOptions<span class="
   </div>
 <p><canvas id="the-canvas" style="border: 1px solid black;"></canvas></p>
 </section>
-<script src="/nerdycreativity/lib/pdfjs/generic-legacy/build/pdf.mjs" type="module"></script>
+<script src="/nerdycreativity/assets/lib/pdfjs/generic-legacy/build/pdf.mjs" type="module"></script>
+<script src="/nerdycreativity/assets/scripts/pdfviewer.js" type="module"></script>
 
 
     <ul class="links-nextprev">
@@ -789,7 +790,7 @@ pdfjsLib<span class="token punctuation">.</span>GlobalWorkerOptions<span class="
 
     <footer></footer>
 
-    <!-- This page `/blog/2025-06-23-pdfviewer-eleventy/` was built on 2025-06-28T04:58:21.687Z -->
-    <script type="module" src="/nerdycreativity/dist/_rmTWt6XFr.js"></script>
+    <!-- This page `/blog/2025-06-23-pdfviewer-eleventy/` was built on 2025-06-28T08:12:20.380Z -->
+    <script type="module" src="/nerdycreativity/dist/IkPw2Nb1QI.js"></script>
   </body>
 </html>
