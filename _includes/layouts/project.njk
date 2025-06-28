@@ -1,8 +1,8 @@
 ---
-layout: "layouts/base.njk"
+layout: "layouts/projects.njk"
 ---
 
-<div class="project">
+<div class="project-wrapper">
   <h1>{{ title }}</h1>
 
   <ul class="project-metadata">
@@ -43,9 +43,7 @@ layout: "layouts/base.njk"
     </ul>
   {% endif %}
 
-  <div class="content prose">
     {{ content | safe }}
-  </div>
 
   {% if teckStack %}
     <h2>Tech Stack</h2>

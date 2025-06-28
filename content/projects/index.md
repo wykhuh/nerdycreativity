@@ -1,5 +1,5 @@
 ---
-layout: layouts/base.njk
+layout: layouts/projects.njk
 eleventyNavigation:
   key: Projects
   order: 4
