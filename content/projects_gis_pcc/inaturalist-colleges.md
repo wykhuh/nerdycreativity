@@ -4,7 +4,7 @@ tags:
   - community science
   - GIS
 
-image: /images/gis/inat-colleges.png
+image: /images/gis/inat-colleges.jpg
 imageAlt: "Map of iNaturalist at LA County colleges"
 showProjectHero: false
 teckStack:

@@ -4,7 +4,7 @@ tags:
   - community science
   - GIS
 
-image: /images/gis/inat-la-river.png
+image: /images/gis/inat-la-river.jpg
 imageAlt: "Map of iNaturalist observations near the LA River"
 showProjectHero: false
 teckStack:

@@ -4,7 +4,7 @@ tags:
   - community science
   - GIS
 
-image: /images/gis/la-river-dashboard.png
+image: /images/gis/la-river-dashboard.jpg
 imageAlt: "Biodiversity of the Los Angeles River Dashboard"
 teckStack:
   - "ArcGIS Pro"

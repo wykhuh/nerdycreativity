@@ -3,7 +3,7 @@ title: Salton Sea Changing Area (Revised)
 tags:
   - GIS
 
-image: /images/gis/SaltonSea.png
+image: /images/gis/SaltonSea.jpg
 imageAlt: "Map of Salton Sea"
 showProjectHero: false
 teckStack:
