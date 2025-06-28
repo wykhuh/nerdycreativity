@@ -1,7 +1,7 @@
 ---
 title: Thoughts about my first GIS class
 date: 2025-02-18
-tags: [GIS, Mt SAC]
+tags: [GIS]
 ---
 
 I finished the Mt San Antonio College GEOG 10 Introduction to GIS class. It was the first time I've used ArcGIS Pro.

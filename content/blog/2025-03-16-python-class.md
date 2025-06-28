@@ -1,7 +1,7 @@
 ---
 title: My First Python class
 date: 2025-03-16
-tags: [GIS, PCC]
+tags: [GIS]
 ---
 
 As part of Pasadena City College's [Geographic Information Systems and Technology certificate](https://pasadena.edu/academics/divisions/natural-sciences/areas-of-study/gis.php) program, I'm enrolled in CIS 012 Introduction to Programming

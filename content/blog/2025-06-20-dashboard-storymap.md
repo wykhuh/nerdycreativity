@@ -1,7 +1,7 @@
 ---
 title: Communicating Information - ArcGIS Dashboard vs ArcGIS StoryMap
 date: 2025-06-20
-tags: [GIS, PCC]
+tags: [GIS]
 ---
 
 For the final project of the Pasadena City College GEOG 115 Environmental Analysis with GIS class, students had the choice of creating a ArcGIS Dashboard or creating a ArcGIS StoryMap. Two students including myself choose to do dashboards, 18 students choose to do StoryMaps.
