@@ -9,24 +9,29 @@ imageAlt: "Map of iNaturalist observations near the LA River"
 showProjectHero: false
 teckStack:
   - "ArcGIS Pro"
-  - "ArcGIS Dashboard"
 siteUrl:
 repoUrl:
 projectType: projects_gis_pcc
 ---
 
-As part of Pasadena City College's Geographic Information Systems and Technology certificate program, I did a few projects about biodiversity along the Los Angeles River. I used iNaturalist data from GBIF for the biodiversity information.
+## Project Details
 
-## Project 1
+This project examines the biodiversity along the Los Angeles River.
 
-I created three maps that looked at biodiversity along the LA River. First maps looks at the number of iNaturalist observation withing two miles of the LA River. Second map compares iNaturalist observations with the location of parks and soft-bottom areas of the river. Third map compares the number of iNaturalist observations with median household income. The maps were created using ArcGIS Pro.
+The first map looks at the number of iNaturalist observation within two miles of the LA River. The second map compares iNaturalist observations with the location of parks and soft-bottom areas of the river. The third map compares the number of iNaturalist observations with median household income.
 
-## Project 2
+{% set pdfUrl = '/pdfs/pcc-portfolio/inat_la_river.pdf' %}
+{% include "pdfviewer.njk" %}
 
-I created a ArcGIS Dashboard about the Biodiversity of the LA River. The interactive site gives users information about iNaturalist observations along the LA River and biodiversity scores from the Los Angeles River Watershed Monitoring Program (LARWMP). Users can search for taxa and LARWMP monitoring stations. The taxa counts and biodiversity scores are updated as users interact with the map.
+## Data Sources
 
-Data sources: The dashboard uses data from iNaturalist from GBIF, [Los Angeles River Watershed Monitoring Program (LARWMP)](https://www.watershedhealth.org/larwmp), and [LA River Master Plan](https://larivermasterplan.org/). LARWMP data came from Council of Watershed Health (CWH).
+- iNaturalist data from [GBIF.org](https://www.gbif.org/)
+- Boundaries for LA River and soft-bottom areas from [LA River Master Plan](https://larivermasterplan.org/resources/)
+- 2020 Census data from [City of Los Angeles](https://geohub.lacity.org/datasets/339787e096f94c2dbfbf1909698d6c5c_14/explore)
+- Parks data from [County of Los Angeles](https://egis-lacounty.hub.arcgis.com/datasets/lacounty::countywide-parks-and-open-space-public-hosted/about)
 
-### Links
+## Pasadena City College Course
 
-[https://www.arcgis.com/apps/dashboards/765f13a50c2744528213457e95b7d89e](Biodiveristy of the LA River dashboard)
+GEOG 113 Data Acquisition and Management
+
+GEOG 114 Cartographic Design
