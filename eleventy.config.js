@@ -126,6 +126,8 @@ export default async function (eleventyConfig) {
   // https://www.11ty.dev/docs/copy/#emulate-passthrough-copy-during-serve
 
   // eleventyConfig.setServerPassthroughCopyBehavior("passthrough");
+  eleventyConfig.addPassthroughCopy("CNAME");
+  eleventyConfig.addPassthroughCopy(".nojekyll");
 }
 
 export const config = {
