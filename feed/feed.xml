@@ -3,18 +3,18 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <title>Blog Title</title>
   <subtitle>This is a longer description about your blog.</subtitle>
-  <link href="https://example.com/nerdycreativity/feed/feed.xml" rel="self" />
-  <link href="https://example.com/nerdycreativity/" />
+  <link href="https://example.com/feed/feed.xml" rel="self" />
+  <link href="https://example.com/" />
   <updated>2025-06-24T00:00:00Z</updated>
-  <id>https://example.com/nerdycreativity/</id>
+  <id>https://example.com/</id>
   <author>
     <name>Your Name</name>
   </author>
   <entry>
     <title>Adding PDF viewer to Eleventy</title>
-    <link href="https://example.com/nerdycreativity/blog/2025-06-23-pdfviewer-eleventy/" />
+    <link href="https://example.com/blog/2025-06-23-pdfviewer-eleventy/" />
     <updated>2025-06-24T00:00:00Z</updated>
-    <id>https://example.com/nerdycreativity/blog/2025-06-23-pdfviewer-eleventy/</id>
+    <id>https://example.com/blog/2025-06-23-pdfviewer-eleventy/</id>
     <content type="html">&lt;p&gt;I wanted to add a PDF viewer to Eleventy using &lt;a href=&quot;https://mozilla.github.io/pdf.js/&quot;&gt;PDF.js&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;At first, I installed PDF.js from npm. However, the npm version only works on Firefox and Chrome. To get a version that works on Safari, I needed to use the legacy build version.&lt;/p&gt;
 &lt;p&gt;I cloned PDF.js repo and installed dependencies.&lt;/p&gt;
@@ -225,16 +225,16 @@ pdfjsLib&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;GlobalWork
   &lt;/div&gt;
 &lt;p&gt;&lt;canvas id=&quot;the-canvas&quot; style=&quot;border: 1px solid black;&quot;&gt;&lt;/canvas&gt;&lt;/p&gt;
 &lt;/section&gt;
-&lt;script src=&quot;https://example.com/nerdycreativity/assets/lib/pdfjs/generic-legacy/build/pdf.mjs&quot; type=&quot;module&quot;&gt;&lt;/script&gt;
-&lt;script src=&quot;https://example.com/nerdycreativity/assets/scripts/pdfviewer.js&quot; type=&quot;module&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;https://example.com/assets/lib/pdfjs/generic-legacy/build/pdf.mjs&quot; type=&quot;module&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;https://example.com/assets/scripts/pdfviewer.js&quot; type=&quot;module&quot;&gt;&lt;/script&gt;
 
 </content>
   </entry>
   <entry>
     <title>Adding Leaflet maps to Eleventy</title>
-    <link href="https://example.com/nerdycreativity/blog/2025-06-22-leaflet-eleventy/" />
+    <link href="https://example.com/blog/2025-06-22-leaflet-eleventy/" />
     <updated>2025-06-22T00:00:00Z</updated>
-    <id>https://example.com/nerdycreativity/blog/2025-06-22-leaflet-eleventy/</id>
+    <id>https://example.com/blog/2025-06-22-leaflet-eleventy/</id>
     <content type="html">&lt;p&gt;I wanted to find out how to add Leaflet maps to Eleventy, and I came across this post from &lt;a href=&quot;https://cloudcannon.com/tutorials/eleventy-beginner-tutorial/eleventy-global-data-files/&quot;&gt;Mike Neumegen at cloudcannon&lt;/a&gt;. The code is kinda outdated, so I had to update some things.&lt;/p&gt;
 &lt;p&gt;First you create in &lt;code&gt;locations.json&lt;/code&gt; file in the &lt;code&gt;_data&lt;/code&gt; folder. &lt;code&gt;locations.json&lt;/code&gt; is an array of locations&lt;/p&gt;
 &lt;pre class=&quot;language-json&quot; tabindex=&quot;0&quot;&gt;&lt;code class=&quot;language-json&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;
@@ -331,9 +331,9 @@ pdfjsLib&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;GlobalWork
   </entry>
   <entry>
     <title>Communicating Information - ArcGIS Dashboard vs ArcGIS StoryMap</title>
-    <link href="https://example.com/nerdycreativity/blog/2025-06-20-dashboard-storymap/" />
+    <link href="https://example.com/blog/2025-06-20-dashboard-storymap/" />
     <updated>2025-06-20T00:00:00Z</updated>
-    <id>https://example.com/nerdycreativity/blog/2025-06-20-dashboard-storymap/</id>
+    <id>https://example.com/blog/2025-06-20-dashboard-storymap/</id>
     <content type="html">&lt;p&gt;For the final project of the Pasadena City College GEOG 115 Environmental Analysis with GIS class, students had the choice of creating a ArcGIS Dashboard or creating a ArcGIS StoryMap. Two students including myself choose to do dashboards, 18 students choose to do StoryMaps.&lt;/p&gt;
 &lt;p&gt;GIS is a technical subject. People are dealing with creating maps and charts to analyze an visualize geospatial data. Yet only two people were interested in creating dashboards to display that data. The rest wanted to tell a story with prose, images, and videos.&lt;/p&gt;
 &lt;p&gt;If storytelling is the preferred method of communicating for these geography students, then why do so many people in academic science research community deemphasized and discouraged
@@ -342,9 +342,9 @@ science communication to the general public?&lt;/p&gt;
   </entry>
   <entry>
     <title>Day at UCLA Botany Gardens</title>
-    <link href="https://example.com/nerdycreativity/blog/2025-06-07-ucla-gardens/" />
+    <link href="https://example.com/blog/2025-06-07-ucla-gardens/" />
     <updated>2025-06-07T00:00:00Z</updated>
-    <id>https://example.com/nerdycreativity/blog/2025-06-07-ucla-gardens/</id>
+    <id>https://example.com/blog/2025-06-07-ucla-gardens/</id>
     <content type="html">&lt;p&gt;I spent the day at UCLA Mathias Botanical Garden. I went on a guided tour of the garden, attended a plant propagation class, and attended a drawing plants class. I also got unexpectedly got a chance to hang out with some friends, one of whom works at the gardens.&lt;/p&gt;
 &lt;p&gt;During the drawing class, one of the attendees asked for some tips about how to get started. She and her boyfriend had no experience drawing. I would rate my drawing skills as above stick figure level, but nowhere good enough do it as a career. I gave her some tips, and she commended me on my advice. Turns out she&#39;s a teacher so she noticed I focused on growth mindset and positive reinforcement, which is crucial to creating a good learning environment.&lt;/p&gt;
 &lt;p&gt;My friend who works at the Natural History Museum of Los Angeles County told me that some of the high schools students who attended the R coding workshop earlier this year actually used some of what they learned in their school presentation.&lt;/p&gt;
@@ -353,9 +353,9 @@ science communication to the general public?&lt;/p&gt;
   </entry>
   <entry>
     <title>My First Python class</title>
-    <link href="https://example.com/nerdycreativity/blog/2025-03-16-python-class/" />
+    <link href="https://example.com/blog/2025-03-16-python-class/" />
     <updated>2025-03-16T00:00:00Z</updated>
-    <id>https://example.com/nerdycreativity/blog/2025-03-16-python-class/</id>
+    <id>https://example.com/blog/2025-03-16-python-class/</id>
     <content type="html">&lt;p&gt;As part of Pasadena City College&#39;s &lt;a href=&quot;https://pasadena.edu/academics/divisions/natural-sciences/areas-of-study/gis.php&quot;&gt;Geographic Information Systems and Technology certificate&lt;/a&gt; program, I&#39;m enrolled in CIS 012 Introduction to Programming
 Using Python. This is the first time I&#39;ve taken a programming class in college. Previously, I learned programming through reading books, watching videos, and doing projects.&lt;/p&gt;
 &lt;p&gt;Hardest part of the class is the professor lowers the grade on homework assignments if students uses code not covered in the class. I have to carefully review the lecture material so I don&#39;t accidentally use code that wasn&#39;t covered in the class. In other words, I have to do what the professor taught instead of doing what I know would work.&lt;/p&gt;
@@ -363,18 +363,18 @@ Using Python. This is the first time I&#39;ve taken a programming class in colle
   </entry>
   <entry>
     <title>Thoughts about my first GIS class</title>
-    <link href="https://example.com/nerdycreativity/blog/2025-02-18-first-gis-class/" />
+    <link href="https://example.com/blog/2025-02-18-first-gis-class/" />
     <updated>2025-02-18T00:00:00Z</updated>
-    <id>https://example.com/nerdycreativity/blog/2025-02-18-first-gis-class/</id>
+    <id>https://example.com/blog/2025-02-18-first-gis-class/</id>
     <content type="html">&lt;p&gt;I finished the Mt San Antonio College GEOG 10 Introduction to GIS class. It was the first time I&#39;ve used ArcGIS Pro.&lt;/p&gt;
 &lt;p&gt;I have previous experience with spatial analysis using PostGIS and R with sf. While there are advantages of GUI based spatial analysis, I miss being able to document the each step of the analysis the way I can when using code. With GUI based workflow, I get the final result I want, but there isn&#39;t any documentation about how I got those results. With code, you write down each step, so there is documentation about how you got the results.&lt;/p&gt;
 </content>
   </entry>
   <entry>
     <title>Summer Learning</title>
-    <link href="https://example.com/nerdycreativity/blog/2024-06-24-summer-learning/" />
+    <link href="https://example.com/blog/2024-06-24-summer-learning/" />
     <updated>2024-06-24T00:00:00Z</updated>
-    <id>https://example.com/nerdycreativity/blog/2024-06-24-summer-learning/</id>
+    <id>https://example.com/blog/2024-06-24-summer-learning/</id>
     <content type="html">&lt;p&gt;List of courses, books, etc that I&#39;m doing over the summer&lt;/p&gt;
 &lt;p&gt;Coursera. Essential Linear Algebra for Data Science, University of Colorado Boulder&lt;br&gt;
 start: June 9&lt;br&gt;
@@ -431,9 +431,9 @@ done: Aug 14&lt;/p&gt;
   </entry>
   <entry>
     <title>Issues in Community Science - from a community scientist POV</title>
-    <link href="https://example.com/nerdycreativity/blog/2024-06-06-community-science-issues/" />
+    <link href="https://example.com/blog/2024-06-06-community-science-issues/" />
     <updated>2024-06-06T00:00:00Z</updated>
-    <id>https://example.com/nerdycreativity/blog/2024-06-06-community-science-issues/</id>
+    <id>https://example.com/blog/2024-06-06-community-science-issues/</id>
     <content type="html">&lt;p&gt;One of the stated goals of community science is to allow people without a formal science education to participate in science. As a lifelong learner, I&#39;ve turned two hobbies that started from pure curiosity into careers (paper engineering and software engineering). I tried to do it for a third time — using community science as a way to turn my love of science into a science career. I will discuss various obstacles and DEI issues I encountered in community science as an adult informal learner from groups under-represented in STEM. I hope my first-hand experience as a learner and mentor in informal learning will provide community science practitioners ideas on how to make their programs more welcoming, inclusive, and equitable for their community scientists.&lt;/p&gt;
 &lt;h2 id=&quot;my-science-journey&quot;&gt;My science journey&lt;/h2&gt;
 &lt;p&gt;I got interested in science after graduating from college. I spent years reading science books aimed at the general public, and attending public events at Griffith Observatory, Natural History Museum of Los Angeles, NASA JPL, and state/national parks to foster my interest in science. It took years of positive experiences with people and institutions that are dedicated to public outreach to get me to the point of wanting to pursue a science career.&lt;/p&gt;
@@ -459,9 +459,9 @@ done: Aug 14&lt;/p&gt;
   </entry>
   <entry>
     <title>Paper or pixels, making is making</title>
-    <link href="https://example.com/nerdycreativity/blog/2015-05-11-making-is-making/" />
+    <link href="https://example.com/blog/2015-05-11-making-is-making/" />
     <updated>2015-05-11T00:00:00Z</updated>
-    <id>https://example.com/nerdycreativity/blog/2015-05-11-making-is-making/</id>
+    <id>https://example.com/blog/2015-05-11-making-is-making/</id>
     <content type="html">&lt;p&gt;When I tell people that I switched from being a packaging designer to a software engineer, a common response I get is, &amp;quot;Wow, that&#39;s a complete career change!&amp;quot; But for me, I see the commonality between paper engineering and software engineering, instead of the differences.&lt;/p&gt;
 &lt;p&gt;I&#39;ve worked at two consultancies in my career: &lt;a href=&quot;https://www.structuralgraphics.com&quot;&gt;Structural Graphics&lt;/a&gt; makes dimensional print advertising, Philosophie makes web apps. While the final product are different, the process is similar. The clients have an idea, and they need our expertise to turn it into reality. Often times the project has a tight budget and an even tighter schedule, which makes making more challenging and sometimes borderline impossible.&lt;/p&gt;
 &lt;p&gt;It takes a team of people working together to turn nothing into something: the talkers (sales), the organizers (project managers), the makers (designers and engineers) and most importantly the bill-payers (clients). As a member of the makers, it&#39;s rewarding to take the various inputs, use my knowledge and imagination, and output something.&lt;/p&gt;

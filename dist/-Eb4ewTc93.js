@@ -1,6 +1,6 @@
-let pdfWorkerUrl = '/nerdycreativity/assets/lib/pdfjs/generic-legacy/build/pdf.worker.mjs'
+let pdfWorkerUrl = '/assets/lib/pdfjs/generic-legacy/build/pdf.worker.mjs'
 
-  window.PdfViewer.init('/nerdycreativity/assets/pdfs/pcc-portfolio/inat_la_river.pdf', 1 , pdfWorkerUrl)
+  window.PdfViewer.init('/assets/pdfs/pcc-portfolio/inat_la_river.pdf', 1 , pdfWorkerUrl)
 /*
 https://mozilla.github.io/nunjucks/templating.html#builtin-filters
 https://github.com/11ty/eleventy/issues/1158
