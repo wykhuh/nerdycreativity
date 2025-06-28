@@ -5,10 +5,6 @@ https://jsfiddle.net/pdfjs/wagvs9Lf/
 https://github.com/mozilla/pdf.js/tree/master/examples/mobile-viewer
 */
 
-// set workerSrc property
-pdfjsLib.GlobalWorkerOptions.workerSrc =
-  "/lib/pdfjs/generic-legacy/build/pdf.worker.mjs";
-
 let pdfDoc = null;
 let pageNum = 1;
 let pageRendering = false;
@@ -141,8 +137,12 @@ function setupEventHandlers() {
   if (zoomOutEl) zoomOutEl.addEventListener("click", pdfViewZoomOut);
 }
 
-export async function init(url, defaultScale = 1) {
+export async function init(url, defaultScale = 1, pdfWorkerURL) {
   scale = defaultScale;
+
+  // set workerSrc property
+  pdfjsLib.GlobalWorkerOptions.workerSrc = pdfWorkerURL;
+
   setupEventHandlers();
 
   // download pdf
@@ -156,3 +156,6 @@ export async function init(url, defaultScale = 1) {
   // render first page
   renderPage(pageNum);
 }
+
+window.PdfViewer = {};
+PdfViewer.init = init;

@@ -14,8 +14,11 @@
   <canvas id="the-canvas" style="border: 1px solid black;"></canvas>
 </section>
 
-<script src="/lib/pdfjs/generic-legacy/build/pdf.mjs" type="module"></script>
-<script type="module">
-  import {init} from '/pdfviewer.js'
-  init('{{pdfUrl}}', {{pdfScale}})
+<script src="/assets/lib/pdfjs/generic-legacy/build/pdf.mjs" type="module"></script>
+<script src="/assets/scripts/pdfviewer.js" type="module"></script>
+
+<script >
+  let pdfWorkerUrl = '{{"/assets/lib/pdfjs/generic-legacy/build/pdf.worker.mjs"| htmlBaseUrl }}'
+
+  window.PdfViewer.init('{{pdfUrl | htmlBaseUrl }}', {{pdfScale | default(1)}} , pdfWorkerUrl)
 </script>
