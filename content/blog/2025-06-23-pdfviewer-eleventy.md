@@ -215,7 +215,7 @@ Then in the file I want to add a pdf, I included `pdfviewer.njk` and passed in t
 
 ```js
 {% raw %}
-{% set pdfUrl = '/pdfs/pcc-portfolio/inat_la_river.pdf' %}
+{% set pdfUrl = '/assets/pdfs/pcc-portfolio/inat_la_river.pdf' %}
 {% include "pdfviewer.njk" %}
 {% endraw %}
 ```
@@ -224,7 +224,7 @@ To adjust the size of the pdf, I passed in `pdfScale` argument. If it is not set
 
 ```js
 {% raw %}
-{% set pdfUrl = '/pdfs/pcc-portfolio/inat_la_river.pdf' %}
+{% set pdfUrl = '/assets/pdfs/pcc-portfolio/inat_la_river.pdf' %}
 {% set pdfScale = '.4' %}
 {% include "pdfviewer.njk" %}
 {% endraw %}
@@ -232,5 +232,5 @@ To adjust the size of the pdf, I passed in `pdfScale` argument. If it is not set
 
 Here's a PDF.
 
-{% set pdfUrl = '/pdfs/pcc-portfolio/inat_la_river.pdf' %}
+{% set pdfUrl = '/assets/pdfs/pcc-portfolio/inat_la_river.pdf' %}
 {% include "pdfviewer.njk" %}

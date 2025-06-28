@@ -19,7 +19,7 @@ This project examines iNaturalist observations at the four largest campus by phy
 
 The first map shows the location and size of the four campuses. The second map examines the iNaturalists observations at the campuses. The third map compares the iNaturalist observations within the campuses with iNaturalist observations in the surrounding areas.
 
-{% set pdfUrl = '/pdfs/pcc-portfolio/inat_colleges.pdf' %}
+{% set pdfUrl = '/assets/pdfs/pcc-portfolio/inat_colleges.pdf' %}
 {% include "pdfviewer.njk" %}
 
 ## Data Sources

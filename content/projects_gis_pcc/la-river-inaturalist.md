@@ -20,7 +20,7 @@ This project examines the biodiversity along the Los Angeles River.
 
 The first map looks at the number of iNaturalist observation within two miles of the LA River. The second map compares iNaturalist observations with the location of parks and soft-bottom areas of the river. The third map compares the number of iNaturalist observations with median household income.
 
-{% set pdfUrl = '/pdfs/pcc-portfolio/inat_la_river.pdf' %}
+{% set pdfUrl = '/assets/pdfs/pcc-portfolio/inat_la_river.pdf' %}
 {% include "pdfviewer.njk" %}
 
 ## Data Sources

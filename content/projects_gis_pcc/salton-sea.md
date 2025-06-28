@@ -21,7 +21,7 @@ This project examines the shrinkage of the Salton Sea. The project looks at Land
 I'm a software developer. Knowing how to code improved my analysis. I was able to use my software skills to write functions to download the Landsat data, classify the images into land and water, and calculate the area of the lake. By writing custom functions, I was able to process 9 set of images by adding one line of code per year. If I had to write separate code for each year, I would have only examined data from two years.
 
 {% set pdfScale = '.4' %}
-{% set pdfUrl = '/pdfs/salton_sea_presentation.pdf' %}
+{% set pdfUrl = '/assets/pdfs/salton_sea_presentation.pdf' %}
 {% include "pdfviewer.njk" %}
 
 ## Data Sources

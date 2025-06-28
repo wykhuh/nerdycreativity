@@ -19,7 +19,7 @@ As part of the Pasadena City Collge cartography course, I updated the appearance
 
 The first map shows the boundaries of the Salton Sea in 1984 and 2024. The chart shows the rate of change in the area. The second map show the change from 1984 to 2004. The thrid map shows the change from 2004 to 2024.
 
-{% set pdfUrl = '/pdfs/pcc-portfolio/SaltonSea.pdf' %}
+{% set pdfUrl = '/assets/pdfs/pcc-portfolio/SaltonSea.pdf' %}
 {% include "pdfviewer.njk" %}
 
 ## Data Sources
