@@ -30,17 +30,15 @@ One of my frustrations with many community science projects is that community sc
 
 ## Project Details
 
-I parterned up with the Community Science team at the Natural History Museum of Los Angeles County to develop a workshop to teach community scientists and community organizers how to analyze iNaturalist City Nature Challenge data using R. Our goal was to teach community scientists some basic skills so that they could look for answers to their own questions. We believe it is important to teach community scientists that their voice and questions matter. During the first class, we covered how to download iNaturalist CSV data, create maps, and create charts using R. During the second class, each attendee presented their analysis.
+I collaborated with the [Community Science team](https://nhm.org/community-science-nhm) at the Natural History Museum of Los Angeles County to develop a workshop to teach community scientists and community organizers how to analyze iNaturalist City Nature Challenge data using R. Our goal was to teach community scientists some basic skills so that they could look for answers to their own questions. We believe it is important to teach community scientists that their voice and questions matter. During the first class, we covered how to download iNaturalist CSV data, create maps, and create charts using R. During the second class, each attendee presented their analysis.
 
 ## Lessons Learned
 
 1. This was the first time the NHMLAC team offered a data analysis or coding class. We had no idea what the interest level would be. We were pleasantly surprised that over 90 people signed up for 30 spots.
 
-2. Persistence. Learning to code is hard. A few of the participants at the presentation mentioned during their presentation that they struggled with getting things to work.
+2. Agency. It is important to allow people to explore questions that they care about. We had a wide variety of projects. Some looked at a species or a group of species. Some looked at observations at a particular location. Some looked at their own observations. A couple of the participants mentioned that prefer this workshop to the R lessons they took at their college courses because they got the chance to explore their own questions instead of doing exercises laid out by the professor.
 
-3. Agency. It is important to allow people to explore questions that they care about. We had a wide variety of projects. A couple of the participants mentioned that prefer this workshop to the R lessons they took at their college courses because they got the chance to explore their own questions instead of doing exercises laid out by the professor.
-
-4. Dedication. Some people stayed up really late the night before the presentation to finish their projects.
+3. Persistence. Learning to code is hard. A few of the participants mentioned during their presentation that they struggled with getting things to work. Some of the participants struggled and kept trying. Some people stayed up really late the night before the presentation to finish their projects. On the other hand, some of the participants struggled, and didn't show up for the second workshop.
 
 ## Presentations/Publications
 

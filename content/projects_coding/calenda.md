@@ -22,3 +22,4 @@ In November 2017 I attended a bioblitz for CALeDNA, a University of California c
 ## Presentations/Publications
 
 - SciCommCamp 2018 - Coding to Communicate: Creating an online platform to communicate California's biodiversity
+- California Agriculture - The CALeDNA program: Citizen scientists and researchers inventory California’s biodiversity
