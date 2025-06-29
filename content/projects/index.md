@@ -17,6 +17,14 @@ Projects I worked on as a software engineer for fun and at work.
   {% for project in collections.projects_coding | sortTitleAlphabetically %}{% include "project-card.njk" %}{% endfor %}
 </div>
 
+## GIS / Mapping
+
+GIS / Mapping projects I worked on for fun.
+
+<div class="project-list">
+  {% for project in collections.projects_gis | sortTitleAlphabetically %}{% include "project-card.njk" %}{% endfor %}
+</div>
+
 ## GIS - Pasadena City College
 
 Projects I worked on as a student at Pasadena City College's Geographic Information Systems and Technology certificate program

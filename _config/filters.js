@@ -42,6 +42,7 @@ export default function (eleventyConfig) {
           "all",
           "posts",
           "projects_coding",
+          "projects_gis",
           "projects_gis_pcc",
           "projects_paper_sg",
         ].indexOf(tag) === -1
