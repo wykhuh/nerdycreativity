@@ -1,0 +1,524 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daniel Shiffman P5.js tutorials</title>
+    <meta name="description" content="Website for me, a nerd who likes to create things.">
+    <link rel="alternate" href="/feed/feed.xml" type="application/atom+xml" title="Nerdy Creativity">
+    
+    
+    
+    <style>
+      /* This is an arbitrary CSS string added to the bundle */
+/* Defaults */
+:root {
+  --font-family: -apple-system, system-ui, sans-serif;
+  --font-family-monospace: Consolas, Menlo, Monaco, Andale Mono WT, Andale Mono,
+    Lucida Console, Lucida Sans Typewriter, DejaVu Sans Mono,
+    Bitstream Vera Sans Mono, Liberation Mono, Nimbus Mono L, Courier New,
+    Courier, monospace;
+}
+
+/* Theme colors */
+:root {
+  --color-gray-10: #f0f0f0;
+  --color-gray-20: #e0e0e0;
+  --color-gray-50: #c0c0c0;
+  --color-gray-90: #333333;
+
+  --background-color: #fff;
+
+  --text-color: var(--color-gray-90);
+  --text-color-link: #dda15e;
+  --text-color-link-active: #bc6c25;
+  --text-color-link-visited: #758543;
+
+  --syntax-tab-size: 2;
+  --primary: #ccd5ae;
+}
+
+/* https://coolors.co/palette/606c38-283618-fefae0-dda15e-bc6c25
+["#606c38","#283618","#fefae0","#dda15e","#bc6c25"] */
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-gray-10: #f0f0f0;
+    --color-gray-20: #e0e0e0;
+    --color-gray-50: #c0c0c0;
+    --color-gray-90: #dad8d8;
+
+    /* --text-color is assigned to --color-gray-_ above */
+    --text-color-link: #1493fb;
+    --text-color-link-active: #6969f7;
+    --text-color-link-visited: #a6a6f8;
+
+    --background-color: #15202b;
+  }
+}
+
+/* Global stylesheet */
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0 auto;
+  font-family: var(--font-family);
+  color: var(--text-color);
+  background-color: var(--background-color);
+}
+html {
+  overflow-y: scroll;
+}
+
+/* https://www.a11yproject.com/posts/how-to-hide-content/ */
+.visually-hidden {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+p {
+  line-height: 1.5;
+}
+
+li {
+  line-height: 1.5;
+}
+
+a[href] {
+  color: var(--text-color-link);
+}
+a[href]:visited {
+  color: var(--text-color-link-visited);
+}
+a[href]:hover,
+a[href]:active {
+  color: var(--text-color-link-active);
+}
+
+main {
+  padding: 1rem;
+}
+main :first-child {
+  margin-top: 0;
+}
+
+.links-nextprev {
+  list-style: none;
+  border-top: 1px dashed var(--color-gray-20);
+  padding: 1em 0;
+}
+
+table {
+  margin: 1em 0;
+}
+table td,
+table th {
+  padding-right: 1em;
+}
+
+pre,
+code {
+  font-family: var(--font-family-monospace);
+}
+pre:not([class*="language-"]) {
+  margin: 0.5em 0;
+  line-height: 1.375; /* 22px /16 */
+  -moz-tab-size: var(--syntax-tab-size);
+  -o-tab-size: var(--syntax-tab-size);
+  tab-size: var(--syntax-tab-size);
+  -webkit-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+  direction: ltr;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+}
+code {
+  word-break: break-all;
+  padding: 0.1rem 0.3rem;
+  background-color: var(--color-gray-10);
+  border-radius: 6px;
+}
+
+/* ===============================
+layout
+=============================== */
+
+main,
+header {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+/* ===============================
+header
+=============================== */
+
+header {
+  box-shadow: 0px 1px 5px var(--color-gray-50);
+}
+
+header {
+  display: flex;
+  gap: 1em 0.5em;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 1em;
+}
+.home-link {
+  font-size: 1em; /* 16px /16 */
+  font-weight: 700;
+  margin-right: 2em;
+}
+.home-link:link:not(:hover) {
+  text-decoration: none;
+}
+
+/* ===============================
+Markdown header links
+=============================== */
+
+.header-anchor {
+  text-decoration: none;
+  font-style: normal;
+  font-size: 1em;
+  margin-left: 0.1em;
+}
+a[href].header-anchor,
+a[href].header-anchor:visited {
+  color: transparent;
+}
+a[href].header-anchor:focus,
+a[href].header-anchor:hover {
+  text-decoration: underline;
+}
+a[href].header-anchor:focus,
+:hover > a[href].header-anchor {
+  color: #aaa;
+}
+
+h2 + .header-anchor {
+  font-size: 1.5em;
+}
+
+/* ===============================
+nav
+=============================== */
+
+.nav {
+  display: flex;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.nav-item {
+  display: inline-block;
+  margin-right: 1em;
+}
+.nav-item a[href]:not(:hover) {
+  text-decoration: none;
+}
+.nav a[href][aria-current="page"] {
+  text-decoration: underline;
+}
+
+.nav-item a[href] {
+  color: var(--text-color-link-visited);
+}
+
+/* ===============================
+ posts lists
+=============================== */
+
+.postlist {
+  padding: 0;
+}
+.postlist-item {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  margin-bottom: 1em;
+}
+
+.postlist-date,
+.postlist-item:before {
+  font-size: 0.8125em; /* 13px /16 */
+  color: var(--color-gray-90);
+}
+.postlist-date {
+  word-spacing: -0.5px;
+}
+.postlist-link {
+  font-size: 1.1875em; /* 19px /16 */
+  font-weight: 700;
+  flex-basis: calc(100% - 1.5rem);
+  padding-left: 0.25em;
+  padding-right: 0.5em;
+  text-underline-position: from-font;
+  text-underline-offset: 0;
+  text-decoration-thickness: 1px;
+}
+.postlist-item-active .postlist-link {
+  font-weight: bold;
+}
+
+/* ===============================
+ posts tags
+=============================== */
+
+.post-tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: capitalize;
+  font-style: italic;
+}
+.postlist-item > .post-tag {
+  align-self: center;
+}
+
+/* ===============================
+ posts
+=============================== */
+
+.post {
+  /* margin:2rem 0; */
+  padding: 2rem 0;
+  /* background-color: #a6a6f8; */
+  /* border-top: 1px dashed var(--color-gray-50); */
+}
+
+.separator {
+  border: none;
+  height: 1px;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent,
+    transparent 5px,
+    var(--color-gray-50) 5px,
+    var(--color-gray-50) 10px
+  );
+}
+
+h1.post-title a {
+  text-decoration: none;
+  color: var(--text-color);
+}
+
+h1.post-title a:visited {
+  color: var(--text-color);
+}
+
+h1.post-title a:active,
+h1.post-title a:hover {
+  text-decoration: underline;
+}
+
+.post-metadata {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 0.5em;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.post-metadata time {
+  margin-right: 1em;
+}
+/* ===============================
+ project lists
+=============================== */
+
+.project-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+.project-card {
+  border-radius: 0;
+  overflow: hidden;
+  border: 1px solid var(--color-gray-20);
+}
+
+.project-card .image-wrapper {
+  /* background-color: #758543; */
+}
+
+.project-card .image-wrapper img {
+  width: 100%;
+  height: 180px;
+  object-fit: contain;
+  border-bottom: 1px solid var(--color-gray-20);
+
+  transition: transform 0.3s ease 0s;
+}
+
+.project-card .image-wrapper:hover img {
+  transform: scale(1.05);
+}
+
+.project-card .card-body {
+  padding: 1rem;
+}
+
+.project-card .title {
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.project-card .title:hover {
+  text-decoration: underline;
+}
+
+.project-card a {
+  display: inline-flex;
+  align-items: center;
+  font-weight: 600;
+}
+
+.project-card a:hover {
+  text-decoration: underline;
+}
+
+/* ===============================
+ project
+=============================== */
+
+.project-metadata {
+  padding: 0;
+  margin: 0;
+  margin-bottom: 1rem;
+}
+
+.project-metadata li {
+  display: inline-block;
+}
+
+img {
+  margin: 1rem 0;
+  max-width: 100%;
+  height: 100%;
+}
+
+.image-wrapper img {
+  width: 100%;
+  height: 100%;
+  margin: 2rem 0 0rem 0;
+  transition: transform 0.3s ease 0s;
+}
+    </style>
+  </head>
+  <body>
+    <a href="#main" id="skip-link" class="visually-hidden">Skip to main content</a>
+
+    <header>
+      <a href="/" class="home-link">Nerdy Creativity</a>
+      <nav>
+        <h2 class="visually-hidden" id="top-level-navigation-menu">Top level navigation menu</h2>
+        <ul class="nav">
+            <li class="nav-item">
+              <a href="/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a href="/blog/">Archive</a>
+            </li>
+            <li class="nav-item">
+              <a href="/about/">About Me</a>
+            </li>
+            <li class="nav-item">
+              <a href="/projects/">Projects</a>
+            </li>
+        </ul>
+      </nav>
+    </header>
+
+    <main id="main">
+      
+
+
+
+<div class="project-wrapper">
+  <h1 id="daniel-shiffman-p5-js-tutorials">Daniel Shiffman P5.js tutorials</h1>
+
+  <ul class="project-metadata">
+      <li>
+        <a href="/tags/creative-coding/" class="post-tag">creative coding</a>
+      </li>
+  </ul>
+
+  
+    <div class="image-wrapper">
+      <picture><source type="image/avif" srcset="/img/DpYffiBZbm-1500.avif 1500w"><source type="image/webp" srcset="/img/DpYffiBZbm-1500.webp 1500w"><img loading="lazy" decoding="async" src="/img/DpYffiBZbm-1500.jpeg" alt="P5.js demos" width="1500" height="900"></picture>
+    </div>
+  
+
+  
+
+  
+    <h2 id="links">Links</h2>
+    <ul class="links-list">
+      
+        
+          <li>
+            <a href="http://wykhuh.github.io/shiffman-p5-tutorials/">Demo</a>
+          </li>
+        
+      
+      
+        <li>
+          <a href="https://github.com/wykhuh/shiffman-p5-tutorials">Github repo</a>
+        </li>
+      
+    </ul>
+  
+
+    <h2 id="project-details">Project Details</h2>
+<p>Code examples from Daniel Shiffman's P5.js tutorials. <a href="https://www.youtube.com/channel/UCvjgXvBlbQiydffZU7m1_aw">YouTube channel</a>. My code slightly differs from the examples shown in tutorials.</p>
+
+
+  
+    <h2 id="tech-stack">Tech Stack</h2>
+
+    <ul class="techstack-list">
+      
+        <li>P5.js</li>
+      
+    </ul>
+  
+</div>
+    <ul class="links-nextprev">
+        <li class="links-nextprev-prev">
+          Previous: <a href="/projects_coding/dancing-digital/">Dancing Digital/No Boundaries Archive Project</a>
+        </li>
+      
+        <li class="links-nextprev-next">
+          Next: <a href="/projects_coding/data-explorers/">Data Explorers</a>
+        </li>
+      
+    </ul>
+
+
+    </main>
+
+    <footer></footer>
+
+    <!-- This page `/projects_coding/p5-shiffman/` was built on 2025-06-29T00:04:18.185Z -->
+    <script type="module" src=""></script>
+  </body>
+</html>
