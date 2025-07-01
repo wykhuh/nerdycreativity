@@ -562,6 +562,43 @@ button#zoomOut {
 
 
   <article class="post">
+    <h1 class="post-title" id="css-nine-years-later">
+      <a href="/blog/2025-07-01-css-9-year-later/">CSS Nine Years Later</a>
+    </h1>
+
+    <ul class="post-metadata">
+      <li>
+        <time datetime="2025-07-01">July 01, 2025</time>
+      </li>
+        <li>
+          <a href="/tags/coding/" class="post-tag">coding</a>
+        </li>
+    </ul>
+
+    <p>I updated the styles on a <a href="https://github.com/wykhuh/shiffman-p5-tutorials">site</a> that I hadn't updated since October 2015, over nine years ago.</p>
+<p>The old code had floats to create two column layout.</p>
+<pre class="language-css" tabindex="0"><code class="language-css"><span class="token selector">#content</span> <span class="token punctuation">{</span>
+  <span class="token property">float</span><span class="token punctuation">:</span> left<span class="token punctuation">;</span>
+  <span class="token property">width</span><span class="token punctuation">:</span> 600px<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">#menu</span> <span class="token punctuation">{</span>
+  <span class="token property">margin-left</span><span class="token punctuation">:</span> 620px<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>The new code uses CSS grid.</p>
+<pre class="language-css" tabindex="0"><code class="language-css"><span class="token selector">#wrapper</span> <span class="token punctuation">{</span>
+  <span class="token property">display</span><span class="token punctuation">:</span> grid<span class="token punctuation">;</span>
+  <span class="token property">grid-template-columns</span><span class="token punctuation">:</span> 6fr 4fr<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>Despite being 9 years old, the javascript and css still worked. That's the advantage of javascript and css - backwards compatibility.</p>
+<p>The site is written in javascript and css. I didn't have to deal with complicated build processes and updating libraries to start and update the site. The 3rd party javascript libraries and css were in the project directories. Sometimes using a simple solution pays off in the long term.</p>
+
+  </article>
+
+  <hr class="separator">
+
+
+  <article class="post">
     <h1 class="post-title" id="adding-pdf-viewer-to-eleventy">
       <a href="/blog/2025-06-23-pdfviewer-eleventy/">Adding PDF viewer to Eleventy</a>
     </h1>
@@ -960,33 +997,10 @@ science communication to the general public?</p>
   <hr class="separator">
 
 
-  <article class="post">
-    <h1 class="post-title" id="my-first-python-class">
-      <a href="/blog/2025-03-16-python-class/">My First Python class</a>
-    </h1>
-
-    <ul class="post-metadata">
-      <li>
-        <time datetime="2025-03-16">March 16, 2025</time>
-      </li>
-        <li>
-          <a href="/tags/gis/" class="post-tag">GIS</a>
-        </li>
-    </ul>
-
-    <p>As part of Pasadena City College's <a href="https://pasadena.edu/academics/divisions/natural-sciences/areas-of-study/gis.php">Geographic Information Systems and Technology certificate</a> program, I'm enrolled in CIS 012 Introduction to Programming
-Using Python. This is the first time I've taken a programming class in college. Previously, I learned programming through reading books, watching videos, and doing projects.</p>
-<p>Hardest part of the class is the professor lowers the grade on homework assignments if students uses code not covered in the class. I have to carefully review the lecture material so I don't accidentally use code that wasn't covered in the class. In other words, I have to do what the professor taught instead of doing what I know would work.</p>
-
-  </article>
-
-  <hr class="separator">
 
 
 
-
-
-  <p>4 more posts can be found in <a href="/blog/">the archive</a>.</p>
+  <p>5 more posts can be found in <a href="/blog/">the archive</a>.</p>
 
 
 
@@ -997,7 +1011,7 @@ Using Python. This is the first time I've taken a programming class in college. 
 
     <footer></footer>
 
-    <!-- This page `/` was built on 2025-06-29T00:04:18.169Z -->
+    <!-- This page `/` was built on 2025-07-01T07:37:30.215Z -->
     <script type="module" src="/dist/-Eb4ewTc93.js"></script>
   </body>
 </html>

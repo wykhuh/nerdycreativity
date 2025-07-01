@@ -5,11 +5,35 @@
   <subtitle>This is a longer description about your blog.</subtitle>
   <link href="https://example.com/feed/feed.xml" rel="self" />
   <link href="https://example.com/" />
-  <updated>2025-06-24T00:00:00Z</updated>
+  <updated>2025-07-01T00:00:00Z</updated>
   <id>https://example.com/</id>
   <author>
     <name>Your Name</name>
   </author>
+  <entry>
+    <title>CSS Nine Years Later</title>
+    <link href="https://example.com/blog/2025-07-01-css-9-year-later/" />
+    <updated>2025-07-01T00:00:00Z</updated>
+    <id>https://example.com/blog/2025-07-01-css-9-year-later/</id>
+    <content type="html">&lt;p&gt;I updated the styles on a &lt;a href=&quot;https://github.com/wykhuh/shiffman-p5-tutorials&quot;&gt;site&lt;/a&gt; that I hadn&#39;t updated since October 2015, over nine years ago.&lt;/p&gt;
+&lt;p&gt;The old code had floats to create two column layout.&lt;/p&gt;
+&lt;pre class=&quot;language-css&quot; tabindex=&quot;0&quot;&gt;&lt;code class=&quot;language-css&quot;&gt;&lt;span class=&quot;token selector&quot;&gt;#content&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token property&quot;&gt;float&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; left&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token property&quot;&gt;width&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; 600px&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;token selector&quot;&gt;#menu&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token property&quot;&gt;margin-left&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; 620px&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The new code uses CSS grid.&lt;/p&gt;
+&lt;pre class=&quot;language-css&quot; tabindex=&quot;0&quot;&gt;&lt;code class=&quot;language-css&quot;&gt;&lt;span class=&quot;token selector&quot;&gt;#wrapper&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token property&quot;&gt;display&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; grid&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token property&quot;&gt;grid-template-columns&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; 6fr 4fr&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Despite being 9 years old, the javascript and css still worked. That&#39;s the advantage of javascript and css - backwards compatibility.&lt;/p&gt;
+&lt;p&gt;The site is written in javascript and css. I didn&#39;t have to deal with complicated build processes and updating libraries to start and update the site. The 3rd party javascript libraries and css were in the project directories. Sometimes using a simple solution pays off in the long term.&lt;/p&gt;
+</content>
+  </entry>
   <entry>
     <title>Adding PDF viewer to Eleventy</title>
     <link href="https://example.com/blog/2025-06-23-pdfviewer-eleventy/" />
