@@ -2,6 +2,7 @@
 title: After iNaturalist
 tags:
   - community science
+  - iNaturalist
 
 image: /images/coding/After_iNaturalist.jpg
 imageAlt: After iNaturalist graphic
